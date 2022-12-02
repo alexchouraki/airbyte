@@ -7,10 +7,12 @@ from abc import ABC
 from typing import Any, Iterable, List, Mapping, MutableMapping, Optional, Tuple
 
 import requests
+from airbyte_cdk.models import SyncMode
 from airbyte_cdk.sources import AbstractSource
 from airbyte_cdk.sources.streams import Stream
 from airbyte_cdk.sources.streams.http import HttpStream
-from airbyte_cdk.sources.streams.http.auth import TokenAuthenticator
+from airbyte_cdk.sources.streams.http.requests_native_auth import TokenAuthenticator
+
 
 """
 TODO: Most comments in this class are instructive and should be deleted after the source is implemented.
@@ -26,9 +28,16 @@ The approach here is not authoritative, and devs are free to use their own judge
 There are additional required TODOs in the files within the integration_tests folder and the spec.yaml file.
 """
 
+class BaseWelkinHealthStream(HttpStream, ABC):
+    def __init__(self, tenant_name: str, instance_name : str, start_date: str, **kwargs):
+        super().__init__(**kwargs)
+        self._start_date = start_date
+        self._tenant_name = tenant_name
+        self._instance_name = instance_name
+
 
 # Basic full refresh stream
-class WelkinHealthStream(HttpStream, ABC):
+class WelkinHealthStream(BaseWelkinHealthStream, ABC):
     """
     TODO remove this comment
 
@@ -55,8 +64,12 @@ class WelkinHealthStream(HttpStream, ABC):
     See the reference docs for the full list of configurable options.
     """
 
-    # TODO: Fill in the url base. Required.
-    url_base = "https://example-api.com/v1/"
+    primary_key = "id"
+    page_size = 100
+
+    @property
+    def url_base(self) -> str:
+        return f"https://api.live.welkincloud.io/{self._tenant_name}/{self._instance_name}/"
 
     def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
         """
@@ -73,7 +86,13 @@ class WelkinHealthStream(HttpStream, ABC):
         :return If there is another page in the result, a mapping (e.g: dict) containing information needed to query the next page in the response.
                 If there are no more pages in the result, return None.
         """
-        return None
+        try:
+            if response.json()['cursor']['hasNext']:
+                return {"start": response.json()['cursor']['end']}
+            else:
+                return None
+        except:
+            return None
 
     def request_params(
         self, stream_state: Mapping[str, Any], stream_slice: Mapping[str, any] = None, next_page_token: Mapping[str, Any] = None
@@ -82,33 +101,124 @@ class WelkinHealthStream(HttpStream, ABC):
         TODO: Override this method to define any query parameters to be set. Remove this method if you don't need to define request params.
         Usually contains common params e.g. pagination size etc.
         """
-        return {}
+        if next_page_token is not None:
+            return {"start": next_page_token['start']}
+        else:
+            return {}
 
     def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
-        """
-        TODO: Override this method to define how a response is parsed.
-        :return an iterable containing each record in the response
-        """
-        yield {}
+        data = response.json()['data']
+        yield from [record for record in data]
 
-
-class Customers(WelkinHealthStream):
-    """
-    TODO: Change class name to match the table/data source this stream corresponds to.
-    """
-
-    # TODO: Fill in the primary key. Required. This is usually a unique field in the stream, like an ID or a timestamp.
-    primary_key = "customer_id"
+class ExportAssessments(WelkinHealthStream):
+    primary_key = "id"
 
     def path(
         self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
     ) -> str:
-        """
-        TODO: Override this method to define the path this stream corresponds to. E.g. if the url is https://example-api.com/v1/customers then this
-        should return "customers". Required.
-        """
-        return "customers"
+        return "export/ASSESSMENT"
 
+class ExportCalendarEvents(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/CALENDAR_EVENT"
+
+class ExportCdtRecords(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/CDT_RECORD"
+
+class ExportEmails(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/EMAIL"
+
+class ExportEncounters(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/ENCOUNTER"
+
+class ExportEncounterComments(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/ENCOUNTER_COMMENT"
+
+class ExportEncounterDispositions(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/ENCOUNTER_DISPOSITION"
+
+class ExportPatients(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/PATIENT"
+
+class ExportPfas(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/PFA"
+
+
+class ExportSms(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/SMS"
+
+
+class ExportTasks(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/TASK"
+
+class ExportVoiceCalls(WelkinHealthStream):
+    primary_key = "id"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "export/VOICE_CALL"
+
+class ReportsPatientProgramPhaseDistribution(WelkinHealthStream):
+    primary_key = "title"
+
+    def path(
+        self, stream_state: Mapping[str, Any] = None, stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None
+    ) -> str:
+        return "reports/patient-program-phase-distribution"
+    
+    def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
+        data = response.json()
+        yield from [record for record in data]
 
 # Basic incremental stream
 class IncrementalWelkinHealthStream(WelkinHealthStream, ABC):
@@ -117,8 +227,9 @@ class IncrementalWelkinHealthStream(WelkinHealthStream, ABC):
          if you do not need to implement incremental sync for any streams, remove this class.
     """
 
-    # TODO: Fill in to checkpoint stream reads after N records. This prevents re-reading of data if the stream fails for any reason.
-    state_checkpoint_interval = None
+    state_checkpoint_interval = 500
+    cursor_field = "updatedAt"
+
 
     @property
     def cursor_field(self) -> str:
@@ -139,68 +250,112 @@ class IncrementalWelkinHealthStream(WelkinHealthStream, ABC):
         return {}
 
 
-class Employees(IncrementalWelkinHealthStream):
-    """
-    TODO: Change class name to match the table/data source this stream corresponds to.
-    """
+# class Employees(IncrementalWelkinHealthStream):
+#     """
+#     TODO: Change class name to match the table/data source this stream corresponds to.
+#     """
 
-    # TODO: Fill in the cursor_field. Required.
-    cursor_field = "start_date"
+#     # TODO: Fill in the cursor_field. Required.
+#     cursor_field = "start_date"
 
-    # TODO: Fill in the primary key. Required. This is usually a unique field in the stream, like an ID or a timestamp.
-    primary_key = "employee_id"
+#     # TODO: Fill in the primary key. Required. This is usually a unique field in the stream, like an ID or a timestamp.
+#     primary_key = "employee_id"
 
-    def path(self, **kwargs) -> str:
-        """
-        TODO: Override this method to define the path this stream corresponds to. E.g. if the url is https://example-api.com/v1/employees then this should
-        return "single". Required.
-        """
-        return "employees"
+#     def path(self, **kwargs) -> str:
+#         """
+#         TODO: Override this method to define the path this stream corresponds to. E.g. if the url is https://example-api.com/v1/employees then this should
+#         return "single". Required.
+#         """
+#         return "employees"
 
-    def stream_slices(self, stream_state: Mapping[str, Any] = None, **kwargs) -> Iterable[Optional[Mapping[str, any]]]:
-        """
-        TODO: Optionally override this method to define this stream's slices. If slicing is not needed, delete this method.
+#     def stream_slices(self, stream_state: Mapping[str, Any] = None, **kwargs) -> Iterable[Optional[Mapping[str, any]]]:
+#         """
+#         TODO: Optionally override this method to define this stream's slices. If slicing is not needed, delete this method.
 
-        Slices control when state is saved. Specifically, state is saved after a slice has been fully read.
-        This is useful if the API offers reads by groups or filters, and can be paired with the state object to make reads efficient. See the "concepts"
-        section of the docs for more information.
+#         Slices control when state is saved. Specifically, state is saved after a slice has been fully read.
+#         This is useful if the API offers reads by groups or filters, and can be paired with the state object to make reads efficient. See the "concepts"
+#         section of the docs for more information.
 
-        The function is called before reading any records in a stream. It returns an Iterable of dicts, each containing the
-        necessary data to craft a request for a slice. The stream state is usually referenced to determine what slices need to be created.
-        This means that data in a slice is usually closely related to a stream's cursor_field and stream_state.
+#         The function is called before reading any records in a stream. It returns an Iterable of dicts, each containing the
+#         necessary data to craft a request for a slice. The stream state is usually referenced to determine what slices need to be created.
+#         This means that data in a slice is usually closely related to a stream's cursor_field and stream_state.
 
-        An HTTP request is made for each returned slice. The same slice can be accessed in the path, request_params and request_header functions to help
-        craft that specific request.
+#         An HTTP request is made for each returned slice. The same slice can be accessed in the path, request_params and request_header functions to help
+#         craft that specific request.
 
-        For example, if https://example-api.com/v1/employees offers a date query params that returns data for that particular day, one way to implement
-        this would be to consult the stream state object for the last synced date, then return a slice containing each date from the last synced date
-        till now. The request_params function would then grab the date from the stream_slice and make it part of the request by injecting it into
-        the date query param.
-        """
-        raise NotImplementedError("Implement stream slices or delete this method!")
+#         For example, if https://example-api.com/v1/employees offers a date query params that returns data for that particular day, one way to implement
+#         this would be to consult the stream state object for the last synced date, then return a slice containing each date from the last synced date
+#         till now. The request_params function would then grab the date from the stream_slice and make it part of the request by injecting it into
+#         the date query param.
+#         """
+#         raise NotImplementedError("Implement stream slices or delete this method!")
 
 
 # Source
 class SourceWelkinHealth(AbstractSource):
+
+    @classmethod
+    def get_authenticator(cls, config: Mapping[str, Any]) -> TokenAuthenticator:
+        tenant_name = config.get("tenant_name")
+        client_name = config.get("client_name")
+        client_secret = config.get("client_secret")
+        
+        #to open source, erase what's below
+        dreem_login = config.get("dreem_login")
+        dreem_password = config.get("dreem_password")
+        url = "https://login.rythm.co/welkin_token/token/"
+        r = requests.request(
+                "GET",
+                url,
+                auth=(dreem_login, dreem_password)
+            )
+        #to open source, uncomment the line below    
+        #r = requests.post(f"https://api.live.welkincloud.io/{tenant_name}/admin/api_clients/{client_name}", json={"secret":client_secret})
+        r.raise_for_status()
+        tok = r.json()["token"]
+        return TokenAuthenticator(token=tok)
+
+    @classmethod
+    def convert_config2stream_args(cls, config: Mapping[str, Any]) -> Mapping[str, Any]:
+        """Convert input configs to parameters of the future streams
+        This function is used by unit tests too
+        """
+        return {
+            "start_date": config["start_date"],
+            "authenticator": cls.get_authenticator(config),
+            "tenant_name": config["tenant_name"],
+            "instance_name": config["instance_name"],
+        }
+
     def check_connection(self, logger, config) -> Tuple[bool, any]:
-        """
-        TODO: Implement a connection check to validate that the user-provided config can be used to connect to the underlying API
+        try:
+            args = self.convert_config2stream_args(config)
+            stream = ExportPatients(**args)
+            records = stream.read_records(sync_mode=SyncMode.full_refresh)
+            next(records)
+            return True, None
+        except Exception as e:
+            return False, e
 
-        See https://github.com/airbytehq/airbyte/blob/master/airbyte-integrations/connectors/source-stripe/source_stripe/source.py#L232
-        for an example.
-
-        :param config:  the user-input config object conforming to the connector's spec.yaml
-        :param logger:  logger object
-        :return Tuple[bool, any]: (True, None) if the input config can be used to connect to the API successfully, (False, error) otherwise.
-        """
-        return True, None
 
     def streams(self, config: Mapping[str, Any]) -> List[Stream]:
-        """
-        TODO: Replace the streams below with your own streams.
-
+        """Returns relevant a list of available streams
         :param config: A Mapping of the user input configuration as defined in the connector spec.
         """
-        # TODO remove the authenticator if not required.
-        auth = TokenAuthenticator(token="api_key")  # Oauth2Authenticator is also available if you need oauth support
-        return [Customers(authenticator=auth), Employees(authenticator=auth)]
+        args = self.convert_config2stream_args(config)
+        all_streams_mapping = {
+            # sorted in alphabet order
+            "export_assessments": ExportAssessments(**args),
+            "export_calendar_events": ExportCalendarEvents(**args),
+            "export_cdt_records": ExportCdtRecords(**args),
+            "export_emails": ExportEmails(**args),
+            "export_encounters": ExportEncounters(**args),
+            "export_encounter_comments": ExportEncounterComments(**args),
+            "export_encounter_dispositions": ExportEncounterDispositions(**args),
+            "export_patients": ExportPatients(**args),
+            "export_sms": ExportSms(**args),
+            "export_tasks": ExportTasks(**args),
+            "export_voice_calls": ExportVoiceCalls(**args),
+            "reports_patient_program_phase_distribution": ReportsPatientProgramPhaseDistribution(**args)
+        }
+        return [stream_cls for stream_cls in all_streams_mapping.values()]

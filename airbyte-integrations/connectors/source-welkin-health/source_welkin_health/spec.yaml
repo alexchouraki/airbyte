@@ -45,3 +45,17 @@ connectionSpecification:
       examples: 
         - "2021-08-10T13:32:02.528Z"
       pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}Z$"
+      #delete the spec below to open source the connector
+    dreem_login:
+      title: Dreem login
+      type: string
+      description: "The email address associated to your Dreem login"
+      examples:
+        - "alexandrechouraki@dreem.com"
+    dreem_password:
+      title: Dreem password
+      type: string
+      description: "The password associated to your Dreem login"
+      examples:
+        - "+}B{KGTG6#zG%P;tQm0C"
+      airbyte_secret: true

@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "string"]
+    },
+    "updatedAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "sendNow": {
+      "type": ["null", "boolean"]
+    },
+    "scheduledAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "sentAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "receivedAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "deletedAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "date": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "careTeam": {
+      "type": ["null", "string"]
+    },
+    "patientInfo": {
+      "type": ["null", "string"]
+    },
+    "timezone": {
+      "type": ["null", "string"]
+    },
+    "sender": {
+      "type": ["null", "string"]
+    },
+    "from": {
+      "type": ["null", "string"]
+    },
+    "receiver": {
+      "type": ["null", "string"]
+    },
+    "to": {
+      "type": ["null", "string"]
+    },
+    "direction": {
+      "type": ["null", "string"]
+    },
+    "externalId": {
+      "type": ["null", "string"]
+    },
+    "starred": {
+      "type": ["null", "boolean"]
+    },
+    "senderName": {
+      "type": ["null", "string"]
+    },
+    "receiverName": {
+      "type": ["null", "string"]
+    },
+    "errorMessage": {
+      "type": ["null", "string"]
+    },
+    "assignedBy": {
+      "type": ["null", "string"]
+    },
+    "assignedByName": {
+      "type": ["null", "string"]
+    },
+    "hasHistory": {
+      "type": ["null", "boolean"]
+    },
+    "unrecognized": {
+      "type": ["null", "boolean"]
+    },
+    "message": {
+      "type": ["null", "string"]
+    },
+    "parts": {
+      "type": ["null", "number"]
+    },
+    "status": {
+      "type": ["null", "string"]
+    },
+    "messageType": {
+      "type": ["null", "string"]
+    },
+    "phoneId": {
+      "type": ["null", "string"]
+    },
+    "attachments": {
+      "type": ["null", "string"]
+    }
+  }
+}

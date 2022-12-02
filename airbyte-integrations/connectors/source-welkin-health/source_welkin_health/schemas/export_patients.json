@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "string"]
+    },
+    "externalGuid": {
+      "type": ["null", "string"]
+    },
+    "externalId": {
+      "type": ["null", "string"]
+    },
+    "mrn": {
+      "type": ["null", "number"]
+    },
+    "createdAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "updatedAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "createdBy": {
+      "type": ["null", "string"]
+    },
+    "updatedBy": {
+      "type": ["null", "string"]
+    },
+    "createdByName": {
+      "type": ["null", "string"]
+    },
+    "updatedByName": {
+      "type": ["null", "string"]
+    },
+    "firstName": {
+      "type": ["null", "string"]
+    },
+    "lastName": {
+      "type": ["null", "string"]
+    },
+    "middleName": {
+      "type": ["null", "string"]
+    },
+    "birthDate": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "gender": {
+      "type": ["null", "string"]
+    },
+    "maritalStatus": {
+      "type": ["null", "string"]
+    },
+    "primaryLanguage": {
+      "type": ["null", "string"]
+    },
+    "secondaryLanguage": {
+      "type": ["null", "string"]
+    },
+    "email": {
+      "type": ["null", "string"]
+    },
+    "secondaryEmail": {
+      "type": ["null", "string"]
+    },
+    "phone": {
+      "type": ["null", "string"]
+    },
+    "secondaryPhone": {
+      "type": ["null", "string"]
+    },
+    "country": {
+      "type": ["null", "string"]
+    },
+    "state": {
+      "type": ["null", "string"]
+    },
+    "city": {
+      "type": ["null", "string"]
+    },
+    "zip": {
+      "type": ["null", "string"]
+    },
+    "addressLine1": {
+      "type": ["null", "string"]
+    },
+    "addressLine2": {
+      "type": ["null", "string"]
+    },
+    "timezone": {
+      "type": ["null", "string"]
+    },
+    "patientTerritories": {
+      "type": ["null", "array"]
+    },
+    "careTeamMembers": {
+      "type": ["null", "array"]
+    },
+    "patientPrograms": {
+      "type": ["null", "array"]
+    },
+    "careTeam": {
+      "type": ["null", "array"]
+    },
+    "cadence": {
+      "type": ["null", "array"]
+    },
+    "patientRegion": {
+      "type": ["null", "string"]
+    },
+    "patientRegionTitle": {
+      "type": ["null", "string"]
+    },
+    "patientTerritory": {
+      "type": ["null", "string"]
+    },
+    "pointOfContact": {
+      "type": ["null", "object"]
+    }
+  }
+}

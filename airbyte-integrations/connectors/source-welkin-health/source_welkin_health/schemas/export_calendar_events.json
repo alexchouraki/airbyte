@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "string"]
+    },
+    "externalId": {
+      "type": ["null", "string"]
+    },
+    "externalIdUpdatedAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "createdAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "updatedAt": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "createdBy": {
+      "type": ["null", "string"]
+    },
+    "updatedBy": {
+      "type": ["null", "string"]
+    },
+    "eventTitle": {
+      "type": ["null", "string"]
+    },
+    "eventDescription": {
+      "type": ["null", "string"]
+    },
+    "startDateTime": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "localStartDateTime": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "endDateTime": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "localEndDateTime": {
+      "type": ["null", "string"],
+      "format": "date-time",
+      "airbyte_type": "timestamp_with_timezone"
+    },
+    "allDayEvent": {
+      "type": ["null", "boolean"]
+    },
+    "duration": {
+      "type": ["null", "number"]
+    },
+    "eventType": {
+      "type": ["null", "string"]
+    },
+    "eventStatus": {
+      "type": ["null", "string"]
+    },
+    "eventMode": {
+      "type": ["null", "string"]
+    },
+    "eventColor": {
+      "type": ["null", "string"]
+    },
+    "hostId": {
+      "type": ["null", "string"]
+    },
+    "timezone": {
+      "type": ["null", "string"]
+    },
+    "additionalInfo": {
+      "type": ["null", "string"]
+    },
+    "participants": {
+      "type": ["null", "array"]
+    }
+  }
+}

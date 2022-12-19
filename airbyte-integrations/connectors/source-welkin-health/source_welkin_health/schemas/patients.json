@@ -14,6 +14,12 @@
     "mrn": {
       "type": ["null", "number"]
     },
+    "nric": {
+      "type": ["null", "string"]
+    },
+    "accessCode": {
+      "type": ["null", "string"]
+    },
     "createdAt": {
       "type": ["null", "string"],
       "format": "date-time",
@@ -71,8 +77,14 @@
     "phone": {
       "type": ["null", "string"]
     },
+    "primaryPhoneCapabilities": {
+      "type": ["null", "array"]
+    },
     "secondaryPhone": {
       "type": ["null", "string"]
+    },
+    "secondaryPhoneCapabilities": {
+      "type": ["null", "array"]
     },
     "country": {
       "type": ["null", "string"]

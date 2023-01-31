@@ -6,6 +6,7 @@ connectionSpecification:
   required:
     - client_id
     - client_secret
+    - environment
   properties:
     client_id:
       title: Client Id
@@ -21,3 +22,9 @@ connectionSpecification:
       examples:
         - "hLcC7l8CDPzXI8BhHY0pygbC2SgE4XRBoIXtqgW3"
       airbyte_secret: true
+    environment:
+      title: "Environment"
+      type: "string"
+      description: "The environment in which you'd like to replicate data for Athena. This is used to determine which base url to use."
+      default: "Preview"
+      enum: ["Production", "Preview"]

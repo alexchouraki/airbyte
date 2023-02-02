@@ -1,0 +1,18 @@
+{
+  "required": [
+    "templateid",
+    "templatename"
+  ],
+  "properties": {
+    "templateid": {
+      "type": "integer",
+      "description": "ID for this social history template"
+    },
+    "templatename": {
+      "type": "string",
+      "description": "Name for this social history template"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

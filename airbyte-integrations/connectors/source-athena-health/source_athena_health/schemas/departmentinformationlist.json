@@ -1,0 +1,129 @@
+{
+  "required": [
+    "totalcount",
+    "departments"
+  ],
+  "properties": {
+    "totalcount": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "TotalCount"
+    },
+    "departments": {
+      "type": "array",
+      "items": {
+        "required": [
+          "creditcardtypes",
+          "timezoneoffset"
+        ],
+        "properties": {
+          "creditcardtypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "timezoneoffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "singleappointmentcontractmax": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "placeofservicefacility": {
+            "type": "boolean"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "departmentid": {
+            "type": "integer"
+          },
+          "address": {
+            "type": "string"
+          },
+          "placeofservicetypeid": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "clinicals": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "patientdepartmentname": {
+            "type": "string"
+          },
+          "chartsharinggroupid": {
+            "type": "string"
+          },
+          "placeofservicetypename": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "timezonename": {
+            "type": "string"
+          },
+          "communicatorbrandid": {
+            "type": "string"
+          },
+          "medicationhistoryconsent": {
+            "type": "boolean"
+          },
+          "ishospitaldepartment": {
+            "type": "boolean"
+          },
+          "providergroupid": {
+            "type": "string"
+          },
+          "portalurl": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "servicedepartment": {
+            "type": "boolean"
+          },
+          "oneyearcontractmax": {
+            "type": "string"
+          },
+          "fax": {
+            "type": "string"
+          },
+          "providergroupname": {
+            "type": "string"
+          },
+          "doesnotobservedst": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "ecommercecreditcardtypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

@@ -1,0 +1,65 @@
+{
+  "required": [
+    "totalcount",
+    "appointmenttypes"
+  ],
+  "properties": {
+    "totalcount": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "TotalCount"
+    },
+    "appointmenttypes": {
+      "type": "array",
+      "x-ms-client-name": "AppointmentTypes",
+      "items": {
+        "required": [
+          "name",
+          "appointmenttypeid"
+        ],
+        "properties": {
+          "name": {
+            "description": "The name of the appointment type.",
+            "type": "string"
+          },
+          "duration": {
+            "description": "Expected duration of the appointment in minutes.",
+            "type": "integer"
+          },
+          "genericyn": {
+            "description": "If true, this type is a \"generic\" type able to be filled with other types of appointments.",
+            "type": "boolean"
+          },
+          "shortname": {
+            "description": "The short name code of the appointment type.",
+            "type": "string"
+          },
+          "patientyn": {
+            "description": "If true, this type is a patient-facing type.",
+            "type": "boolean"
+          },
+          "patientdisplayname": {
+            "description": "Patient friendly appointment type name. Defaults to regular name.",
+            "type": "string"
+          },
+          "appointmenttypeid": {
+            "description": "The appointment type ID.",
+            "type": "integer"
+          },
+          "templatetypeonlyyn": {
+            "description": "If true, this type is a \"template-only\" type, and must be filled with a different appointment type upon booking.",
+            "type": "boolean"
+          },
+          "createencounteroncheckin": {
+            "description": "If true, then this appointments of this type will generated an encounter when checked in, with certain conditions. It's rather complex, but the rendering provider on the appointment must also have the create encounter feature set, the department must have athena Clinicals enabled, and other rarer and less visible settings.\n",
+            "type": "boolean"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

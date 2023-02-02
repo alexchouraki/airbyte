@@ -1,0 +1,26 @@
+{
+  "properties": {
+    "high": {
+      "description": "The highest value the y value could be.",
+      "type": "integer"
+    },
+    "highordinal": {
+      "description": "Ordinal of the high value.",
+      "type": "string"
+    },
+    "low": {
+      "description": "The lowest value that y could be.",
+      "type": "integer"
+    },
+    "lowordinal": {
+      "description": "Ordinal of the lowest value.",
+      "type": "string"
+    },
+    "prefix": {
+      "description": "Indicator of less than or greater. Possible values: (>,<)\n",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

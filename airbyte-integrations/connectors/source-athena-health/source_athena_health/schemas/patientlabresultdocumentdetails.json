@@ -1,0 +1,250 @@
+{
+  "properties": {
+    "createddate": {
+      "type": "string",
+      "description": "Date the document was created. Please use createddatetime instead."
+    },
+    "documentroute": {
+      "type": "string",
+      "description": "Explains method by which the document was entered into the AthenaNet (INTERFACE (digital), FAX, etc.)\n"
+    },
+    "resultstatus": {
+      "type": "string",
+      "description": "The status of the result."
+    },
+    "providerid": {
+      "type": "integer",
+      "description": "Provider ID for this document"
+    },
+    "externalaccessionid": {
+      "type": "string",
+      "description": "The external accession ID for this document. Format depends on the system the ID belongs to."
+    },
+    "ordertype": {
+      "type": "string",
+      "description": "Order type group name"
+    },
+    "resultnotes": {
+      "type": "string",
+      "description": "Result note on a document."
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the document"
+    },
+    "lastmodifieduser": {
+      "type": "string",
+      "description": "The user who last modified this document."
+    },
+    "externalnoteonly": {
+      "type": "string",
+      "description": "External note for the patient."
+    },
+    "actionnote": {
+      "type": "string",
+      "description": "The most recent action note for a document"
+    },
+    "providerusername": {
+      "type": "string",
+      "description": "The username of the provider associated with this lab result document."
+    },
+    "internalaccessionid": {
+      "type": "string",
+      "description": "The internal accession ID for this document. Format depends on the system the ID belongs to."
+    },
+    "isconfidential": {
+      "type": "boolean",
+      "description": "If true, this result document should not be shown to the patient."
+    },
+    "createddatetime": {
+      "type": "string",
+      "description": "Date/Time (ISO 8601) the document was created"
+    },
+    "documentsubclass": {
+      "type": "string",
+      "description": "Specific type of document"
+    },
+    "encounterid": {
+      "type": "string",
+      "description": "Encounter ID"
+    },
+    "interpretation": {
+      "type": "string",
+      "description": "The practice entered interpretation of this result."
+    },
+    "labresultid": {
+      "type": "string",
+      "description": "The primary key for labresult class of documents"
+    },
+    "labresultloinc": {
+      "type": "string",
+      "description": "Laboratory code that identifies the overall result."
+    },
+    "lastmodifieddatetime": {
+      "type": "string",
+      "description": "Date/time (ISO 8601) the document was last modified"
+    },
+    "notefromlab": {
+      "type": "string",
+      "description": "A note from lab."
+    },
+    "observations": {
+      "type": "array",
+      "description": "Individual observation details",
+      "items": {
+        "properties": {
+          "analyteid": {
+            "description": "Athena ID for the given lab result observation/analyte",
+            "type": "integer",
+            "format": "int32",
+            "x-ms-client-name": "AnalyteId"
+          },
+          "analytename": {
+            "description": "Name / description specific to this analyte",
+            "type": "string"
+          },
+          "loinc": {
+            "description": "Logical Observation Identifiers Names and Codes ID, if available",
+            "type": "string"
+          },
+          "value": {
+            "description": "Value recorded for this observation",
+            "type": "string"
+          },
+          "units": {
+            "description": "Units for this analyte entry, if provided by the lab",
+            "type": "string"
+          },
+          "analytedate": {
+            "description": "Date when this observation was recorded",
+            "type": "string"
+          },
+          "description": {
+            "description": "General description of the lab result test",
+            "type": "string"
+          },
+          "note": {
+            "description": "Additional note for this analyte, if applicable",
+            "type": "string"
+          },
+          "abnormalflag": {
+            "description": "Status indicator of the measurement relative to normal (low, high, normal, abnormal)",
+            "type": "string"
+          },
+          "abnormalhl7code": {
+            "description": "The HL7 code related to the abnormal flag.",
+            "type": "string"
+          },
+          "abnormalhl7name": {
+            "description": "The HL7 description related to the abnormal flag.",
+            "type": "string"
+          },
+          "valuestatus": {
+            "description": "DEPRECATED -- use \"abnormalflag\" instead. Status indicator of the measurement relative to normal (low, high, normal, abnormal)",
+            "type": "string"
+          },
+          "referencerange": {
+            "description": "Reference range of values accepted as normal for this observation",
+            "type": "string"
+          },
+          "resultstatus": {
+            "description": "The status of the result (e.g., \"final\", \"preliminary\", \"corrected\", etc.)",
+            "type": "string"
+          },
+          "labresultstatus": {
+            "description": "The status of the underlying lab result",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "priority": {
+      "type": "string",
+      "description": "Document priority, when available. 1 is high, 2 is normal. Some labs use other numbers or characters that are lab-specific.\n"
+    },
+    "observationdatetime": {
+      "type": "string",
+      "description": "Date/time (ISO 8601) the observation was taken"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the document type"
+    },
+    "alarmdays": {
+      "type": "string",
+      "description": "The number days, weeks, months, or year until a lab result document will go into followup after being sent to the portal.\n"
+    },
+    "documentsource": {
+      "type": "string",
+      "description": "Explains where this document originated."
+    },
+    "reportstatus": {
+      "type": "string",
+      "description": "The status of the report."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject of the document"
+    },
+    "documenttypeid": {
+      "type": "integer",
+      "description": "The ID of the description for this document"
+    },
+    "appointmentid": {
+      "type": "integer",
+      "description": "The appointment ID for this document"
+    },
+    "departmentid": {
+      "type": "string",
+      "description": "Department for the document"
+    },
+    "assignedto": {
+      "type": "string",
+      "description": "Person the document is assigned to"
+    },
+    "createduser": {
+      "type": "string",
+      "description": "The user who created this document."
+    },
+    "deleteddatetime": {
+      "type": "string",
+      "description": "Date/time (ISO 8601) the document was deleted"
+    },
+    "observationdate": {
+      "type": "string",
+      "description": "Date/time the observation was taken"
+    },
+    "documentclass": {
+      "type": "string",
+      "description": "Class of document"
+    },
+    "lastmodifieddate": {
+      "type": "string",
+      "description": "Date/time (ISO 8601) the document was last modified"
+    },
+    "encounterdate": {
+      "type": "string",
+      "description": "Date of the encounter associated with this document"
+    },
+    "facilityid": {
+      "type": "integer",
+      "description": "The ID of the clinical provider associated with this clinical document. Clinical providers are a master list of providers throughout the country. These include providers as well as radiology centers, labs and pharmacies.\n"
+    },
+    "internalnote": {
+      "type": "string",
+      "description": "The 'Internal Note' attached to this document"
+    },
+    "patientnote": {
+      "type": "string",
+      "description": "A note about this lab result for the patient. This may or may not have been sent to the patient."
+    },
+    "tietoorderid": {
+      "type": "string",
+      "description": "Order ID of the order this document is tied to, if any"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

@@ -1,0 +1,51 @@
+{
+  "required": [
+    "dosageaction",
+    "dosagequantityvalue",
+    "dosagequantityunit"
+  ],
+  "properties": {
+    "dosageaction": {
+      "description": "How the medication is taken. Examples are Chew, Take, Inhale, etc.",
+      "type": "string"
+    },
+    "dosagequantityvalue": {
+      "description": "How many of this med is taken.",
+      "type": "number"
+    },
+    "dosagequantityunit": {
+      "description": "The unit of the quantity. Example: tablets, sprays, etc.\n",
+      "type": "string"
+    },
+    "dosagefrequencyvalue": {
+      "description": "How many times (in the given time unit) this should be taken.",
+      "type": "number"
+    },
+    "dosagefrequencyunit": {
+      "description": "The unit of the frequency. Example: per day, per week.\n",
+      "type": "string"
+    },
+    "dosagefrequencydescription": {
+      "description": "A standardized patient-friendly frequency. Example: 6 per day becomes \"every 4 hours\".\n",
+      "type": "string"
+    },
+    "dosageroute": {
+      "description": "How this medication is taken. Example: oral, inhalation, intranasal, etc.\n",
+      "type": "string"
+    },
+    "dosageadditionalinstructions": {
+      "description": "Additional instructions. Example: with meals\n",
+      "type": "string"
+    },
+    "dosagedurationvalue": {
+      "description": "How many duration time units this medication should be taken for.",
+      "type": "integer"
+    },
+    "dosagedurationunit": {
+      "description": "The unit of the duration. Example: days. So take this for days.\n",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

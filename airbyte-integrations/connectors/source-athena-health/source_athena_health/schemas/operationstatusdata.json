@@ -1,0 +1,13 @@
+{
+  "required": [
+    "status"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "The status of this appointment after the operation (generally \"x\")."
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

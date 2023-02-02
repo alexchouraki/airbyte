@@ -1,0 +1,25 @@
+{
+  "required": [
+    "providerid"
+  ],
+  "properties": {
+    "providerid": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "ProviderId",
+      "description": "The ID to be used for this provider. Note that in athenaNet, an individual provider (as defined by a unique NPI) may have multiple provider IDs. For the API, we have collapsed these to a single canonical ID. For updates and deletes, this will be either 1 or -1 depending on success or failure.\n"
+    },
+    "errorreason": {
+      "type": "string",
+      "x-ms-client-name": "ErrorReason",
+      "description": "Error message if the operation did not work."
+    },
+    "alertmessage": {
+      "type": "string",
+      "x-ms-client-name": "AlertMessage",
+      "description": "Alert message if the operation did not work."
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

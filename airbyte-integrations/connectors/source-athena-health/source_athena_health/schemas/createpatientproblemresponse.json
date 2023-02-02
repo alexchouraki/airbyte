@@ -1,0 +1,23 @@
+{
+  "required": [
+    "success"
+  ],
+  "properties": {
+    "problemid": {
+      "description": "If successful, the athena ID of the newly created problem",
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "ProblemId"
+    },
+    "success": {
+      "description": "Whether the operation was successful or not.",
+      "type": "boolean"
+    },
+    "errormessage": {
+      "description": "If the operation failed, this will contain any error messages.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

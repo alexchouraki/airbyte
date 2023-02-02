@@ -1,0 +1,55 @@
+{
+  "properties": {
+    "contracts": {
+      "description": "Information related to existing credit card contracts.",
+      "type": "array",
+      "items": {
+        "required": [
+          "contracts"
+        ],
+        "properties": {
+          "availablebalance": {
+            "description": "The available balance on this contract.",
+            "type": "string"
+          },
+          "contractclass": {
+            "description": "The type of contract. For example, \"ONEYEAR,\"",
+            "type": "string"
+          },
+          "maxamount": {
+            "description": "The maximum allowed amount for this contract.",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "providergroupid": {
+      "description": "Athena ID for this financial group.",
+      "type": "string"
+    },
+    "departmentlist": {
+      "description": "Comma separated list of department IDs that belong to this group",
+      "type": "string"
+    },
+    "balance": {
+      "description": "Balance for this provider group.",
+      "type": "string"
+    },
+    "cleanbalance": {
+      "description": "Indicates whether the balance is associated with a contract, payment plan, or collections agency.",
+      "type": "boolean"
+    },
+    "collectionsbalance": {
+      "description": "The outstanding amount associated with a collections agency.",
+      "type": "string"
+    },
+    "paymentplanbalance": {
+      "description": "The outstanding amount associated with a payment plan.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

@@ -1,0 +1,459 @@
+{
+  "properties": {
+    "reasonid": {
+      "description": "A list of reason IDs that could be used for this slot. Only present if multiple reason IDs are requested.",
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "ReasonId"
+    },
+    "appointmentnotes": {
+      "description": "message",
+      "type": "array",
+      "items": {
+        "properties": {
+          "id": {
+            "description": "The id of the appointment note.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "description": "The note associated with the appointment.",
+            "type": "string"
+          },
+          "displayonschedule": {
+            "description": "Whether the note should be displayed on the schedule.",
+            "type": "boolean"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "appointmentstatus": {
+      "description": "The athenaNet appointment status. There are several possible statuses. x=cancelled. f=future. (It can include appointments where were never checked in, even if the appointment date is in the past. It is up to a practice to cancel appointments as a no show when appropriate to do so.) o=open. 2=checked in. 3=checked out. 4=charge entered (i.e. a past appointment).\n",
+      "type": "string"
+    },
+    "cancelleddatetime": {
+      "description": "The time (mm/dd/yyyy hh24:mi:ss; Eastern time) that this appointment was cancelled (if cancelled)",
+      "type": "string"
+    },
+    "chargeentrynotrequired": {
+      "description": "This field will tell if an appointment has been marked as not requiring change entry.",
+      "type": "boolean"
+    },
+    "hl7providerid": {
+      "description": "This is the raw provider ID that should be used ONLY if using this appointment in conjunction with an HL7 message and with athenahealth's prior guidance. It is only available in some situations.",
+      "type": "integer"
+    },
+    "cancelreasonname": {
+      "description": "If the appointment was cancelled, the name (local to the practice) for the cancel reason.\n",
+      "type": "string"
+    },
+    "chargeentrynotrequiredreason": {
+      "description": "This field will give the reason that an appointment has been marked as not requiring charge entry.",
+      "type": "string"
+    },
+    "lastmodified": {
+      "description": "The date/time when the appointment was last modified. Note: It may be possible for the lastmodified field to be updated without any other field in the API call being changed. This occurs when appointment fields not included in the API output are updated.\n",
+      "type": "string"
+    },
+    "departmentid": {
+      "description": "Id of the department",
+      "type": "integer"
+    },
+    "checkoutdatetime": {
+      "description": "The time (mm/dd/yyyy hh24:mi:ss) that the appointment was checked out.",
+      "type": "string"
+    },
+    "copay": {
+      "description": "Expected copay for this appointment. Based on the appointment type, the patient's primary insurance, and any copays collected. To see the amounts used in this calculated value, see the APPOINTMENTCOPAY fields.\n",
+      "type": "string"
+    },
+    "encounterid": {
+      "description": "The encounter id associated with this appointment, useful for certain other calls. Only present for appointments with Clinicals that have been checked in.\n",
+      "type": "string"
+    },
+    "scheduledby": {
+      "description": "The username who scheduled the appointment.",
+      "type": "string"
+    },
+    "checkindatetime": {
+      "description": "The time (mm/dd/yyyy hh24:mi:ss) that the appointment was checked in.",
+      "type": "string"
+    },
+    "cancelledby": {
+      "description": "If the appointment has been cancelled, the username who cancelled the appointment.\n",
+      "type": "string"
+    },
+    "stopintakedatetime": {
+      "description": "The time (mm/dd/yyyy hh24:mi:ss) that the intake process was completed.",
+      "type": "string"
+    },
+    "encounterstatus": {
+      "description": "The status of this patient in the encounter (READYFORSTAFF, WITHSTAFF, READFORPROVIDER, CHECKEDOUT). Only present for appointments with Clinicals that have been checked in.\n",
+      "type": "string"
+    },
+    "frozenyn": {
+      "description": "If true, this appointment slot is frozen\n",
+      "type": "boolean"
+    },
+    "appointmenttype": {
+      "description": "The practice-friendly (not patient friendly) name for this appointment type. Note that this may not be the same as the booked appointment because of \"generic\" slots.\n",
+      "type": "string"
+    },
+    "appointmenttypeid": {
+      "description": "This is the ID for the appointment type. Note that this may not be the same as the booked appointment because of \"generic\" slots.",
+      "type": "integer"
+    },
+    "cancelreasonid": {
+      "description": "If the appointment was cancelled, the numeric ID (local to the practice) for the cancel reason.",
+      "type": "integer"
+    },
+    "cancelreasonnoshow": {
+      "description": "If the appointment was cancelled, if the cancel reason is marked as a no show reason.",
+      "type": "boolean"
+    },
+    "cancelreasonslotavailable": {
+      "description": "If the appointment was cancelled, if the cancel reason is marked as a slot available reason.",
+      "type": "boolean"
+    },
+    "coordinatorenterpriseyn": {
+      "description": "If true, the appointment was booked through athenaCoordinator Enterprise.",
+      "type": "boolean"
+    },
+    "duration": {
+      "description": "In minutes",
+      "type": "integer"
+    },
+    "scheduleddatetime": {
+      "description": "The time (mm/dd/yyyy hh24:mi:ss; Eastern time) that this appointment was scheduled.",
+      "type": "string"
+    },
+    "urgentyn": {
+      "description": "Urgent flag for the appointment.",
+      "type": "boolean"
+    },
+    "startcheckin": {
+      "description": "The timestamp when the appointment started the check in process. If this is set while an appointment is still in status 'f', it means that the check-in process has begun but is not yet completed.\n",
+      "type": "string"
+    },
+    "appointmentconfirmationid": {
+      "description": "If there is an appointment confirmation result for this appointment, the numeric ID (global to athenaNet).",
+      "type": "integer"
+    },
+    "suggestedoverbooking": {
+      "description": "High risk score for Smart Scheduling",
+      "type": "string"
+    },
+    "appointmentcopay": {
+      "description": "Detailed information about the copay for this appointment. Gives more detail than the COPAY field. Note: this information is not yet available in all practices, we are rolling this out slowly.\n",
+      "type": "array",
+      "items": {
+        "properties": {
+          "insurancecopay": {
+            "description": "The expected copay based on the patient's primary insurance and appointment type.",
+            "type": "string"
+          },
+          "collectedforappointment": {
+            "description": "Copay payments that have already been collected for this specific appointment.",
+            "type": "string"
+          },
+          "collectedforother": {
+            "description": "Copay payments that have already been collected for this patient, but that have not yet been applied to any specific appointment.",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "appointmentid": {
+      "description": "Appointment ID of the booked appointment",
+      "type": "integer"
+    },
+    "date": {
+      "description": "The appointment date.",
+      "type": "string"
+    },
+    "patient": {
+      "description": "See /patients for details",
+      "type": "string"
+    },
+    "startcheckoutdatetime": {
+      "description": "The time (mm/dd/yyyy hh24:mi:ss) that the appointment check-out was started.",
+      "type": "string"
+    },
+    "appointmentconfirmationname": {
+      "description": "If there is an appointment confirmation result for this appointment, the name (global to athenaNet).",
+      "type": "string"
+    },
+    "useexpectedprocedurecodes": {
+      "description": "An array of expected procedure codes attached to this appointment.",
+      "type": "array",
+      "items": {
+        "properties": {
+          "procedurecode": {
+            "description": "The ID of the code.",
+            "type": "string"
+          },
+          "procedurecodedescription": {
+            "description": "The description of the code.",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "lastmodifiedby": {
+      "description": "The user who last modified the appointment.",
+      "type": "string"
+    },
+    "patientappointmenttypename": {
+      "description": "The patient-friendly name for this appointment type. Note that this may not be the same as the booked appointment because of \"generic\" slots.",
+      "type": "string"
+    },
+    "starttime": {
+      "description": "As HH:MM (where HH is the 0-23 hour and MM is the minute). This time is local to the department.",
+      "type": "string"
+    },
+    "stopcheckin": {
+      "description": "The timestamp when the check-in process was finished for this appointment.",
+      "type": "string"
+    },
+    "providerid": {
+      "description": "Id of the provider",
+      "type": "integer"
+    },
+    "stopexamdatetime": {
+      "description": "The time (mm/dd/yyyy hh24:mi:ss) that the exam was completed.",
+      "type": "string"
+    },
+    "renderingproviderid": {
+      "description": "The rendering provider ID.",
+      "type": "integer"
+    },
+    "supervisingproviderid": {
+      "description": "The supervising provider ID.",
+      "type": "string"
+    },
+    "claims": {
+      "description": "As detailed in /claims, if requested.",
+      "type": "array",
+      "items": {
+        "properties": {
+          "referringproviderid": {
+            "description": "The referring provider ID for this claim. See /referringproviders. This is not the same as the ID from the /providers call.",
+            "type": "integer"
+          },
+          "primaryinsurancepayer": {
+            "properties": {
+              "primarypatientinsuranceid": {
+                "description": "Id of the payer",
+                "type": "string"
+              },
+              "secondarypatientinsuranceid": {
+                "description": "Id of the payer",
+                "type": "string"
+              },
+              "note": {
+                "description": "The note that is attached to this status.",
+                "type": "string"
+              },
+              "status": {
+                "description": "The status associated with this responsible payer.",
+                "type": "string"
+              }
+            },
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object"
+          },
+          "secondaryinsurancepayer": {
+            "properties": {
+              "primarypatientinsuranceid": {
+                "description": "Id of the payer",
+                "type": "string"
+              },
+              "secondarypatientinsuranceid": {
+                "description": "Id of the payer",
+                "type": "string"
+              },
+              "note": {
+                "description": "The note that is attached to this status.",
+                "type": "string"
+              },
+              "status": {
+                "description": "The status associated with this responsible payer.",
+                "type": "string"
+              }
+            },
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object"
+          },
+          "diagnoses": {
+            "description": "message",
+            "type": "array",
+            "items": {
+              "properties": {
+                "diagnosisid": {
+                  "description": "A unique ID related to this diagnosis.",
+                  "type": "integer"
+                },
+                "diagnosisdescription": {
+                  "description": "A description of this diagnosis.",
+                  "type": "string"
+                },
+                "diagnosisrawcode": {
+                  "description": "The raw ICD-9 code. This will migrate to ICD-10 in the future.",
+                  "type": "string"
+                },
+                "diagnosiscategory": {
+                  "description": "The category for this diagnosis.",
+                  "type": "string"
+                },
+                "deleteddiagnosis": {
+                  "description": "In certain cases, diagnoses may be added and then removed from a particular claim. In normal circumstances, this will be false. However, if a diagnosis was removed, this will be true.\n",
+                  "type": "string"
+                },
+                "diagnosiscodeset": {
+                  "description": "Either ICD9 or ICD10.",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "claimcreateddate": {
+            "description": "The date the claim was created.",
+            "type": "string"
+          },
+          "procedures": {
+            "description": "Procedures is an array of all procedures. /ccda is a better clinical representation. These fields are:\n",
+            "type": "array",
+            "items": {
+              "properties": {
+                "procedurecategory": {
+                  "description": "The category name associated with this procedure.",
+                  "type": "string"
+                },
+                "allowablemin": {
+                  "description": "The minimum amount expected from payer for all services from this procedure.",
+                  "type": "string"
+                },
+                "proceduredescription": {
+                  "description": "A description of this procedure.",
+                  "type": "string"
+                },
+                "chargeamount": {
+                  "description": "The amount charged for this procedure.",
+                  "type": "string"
+                },
+                "transactionid": {
+                  "description": "The ID of the last transaction associated with the claim.",
+                  "type": "integer"
+                },
+                "procedurecode": {
+                  "description": "The CPT code associated with this procedure.",
+                  "type": "string"
+                },
+                "allowablemax": {
+                  "description": "The maximum amount expected from payer for all services from this procedure.",
+                  "type": "string"
+                },
+                "allowableamount": {
+                  "description": "The total amount expected from payer for all services from this procedure.",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "billedservicedate": {
+            "description": "The billed date of service.",
+            "type": "string"
+          },
+          "billedproviderid": {
+            "description": "The provider ID of the billing provider for this claim.",
+            "type": "integer"
+          },
+          "appointmentid": {
+            "description": "The appointment ID associated with this claim.",
+            "type": "integer"
+          },
+          "chargeamount": {
+            "description": "The total amount billed for all services from this claim.",
+            "type": "string"
+          },
+          "transactionid": {
+            "description": "A unique ID for the primary transaction this claim represents. May be useful for debugging.",
+            "type": "integer"
+          },
+          "claimid": {
+            "description": "athenaNet's internal ID for this claim, specific to the practice.",
+            "type": "integer"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "patientlocationid": {
+      "description": "The location of the patient. See /patientlocation for practice list. Only present for appointments with Clinicals that have been checked in.",
+      "type": "integer"
+    },
+    "encounterstate": {
+      "description": "The status of the clinical encounter associated with this appointment (OPEN, CLOSED, DELETED, PEND, etc.). This differs from encounterstatus, which refers to the status of the patient in the encounter.\n",
+      "type": "string"
+    },
+    "rescheduledappointmentid": {
+      "description": "When an appointment is rescheduled, this is the ID of the replacement appointment.",
+      "type": "integer"
+    },
+    "referringproviderid": {
+      "description": "The referring provider ID.",
+      "type": "integer"
+    },
+    "reminderdetails": {
+      "description": "Detailed ReminderCall information made for this appointment.",
+      "type": "array",
+      "items": {
+        "properties": {
+          "messagetype": {
+            "description": "The type of message that was attempted.",
+            "type": "string"
+          },
+          "calltime": {
+            "description": "Date and time of the call attempt.",
+            "type": "string"
+          },
+          "messageresultid": {
+            "description": "Id of the message attempt.",
+            "type": "integer"
+          },
+          "result": {
+            "description": "A description of what happened during the call attempt.",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "templateappointmenttypeid": {
+      "description": "The original appointment type for this slot. This can change for generic appointments.",
+      "type": "integer"
+    },
+    "templateappointmentid": {
+      "description": "The original appointment ID. This is useful if an appointment has been cancelled and you want to find the original ID.",
+      "type": "integer"
+    },
+    "patientid": {
+      "description": "The athenaNet patient ID for this appointment",
+      "type": "integer"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

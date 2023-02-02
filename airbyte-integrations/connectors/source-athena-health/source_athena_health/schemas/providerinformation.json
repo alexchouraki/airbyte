@@ -1,0 +1,106 @@
+{
+  "required": [
+    "providerid"
+  ],
+  "properties": {
+    "billable": {
+      "type": "boolean",
+      "description": "Indicates if this is a billable provider."
+    },
+    "ansispecialtycode": {
+      "type": "string",
+      "description": "This is the ANSI code for this provider's specialty."
+    },
+    "firstname": {
+      "type": "string",
+      "description": "The provider's first name."
+    },
+    "entitytype": {
+      "type": "string",
+      "description": "Either \"Person\" or \"Non-Person\" (e.g. X-Ray machines)"
+    },
+    "otherprovideridlist": {
+      "type": "string",
+      "description": "When showallproviderids is set to true, a list of all other athenaNet providers IDs that may refer to this same provider. If not present with showallproviderids, there are no other IDs other than the primary ID.\n"
+    },
+    "ansinamecode": {
+      "type": "string",
+      "description": "This is the ANSI name with ANSI code for this provider's specialty."
+    },
+    "displayname": {
+      "type": "string",
+      "description": "The preferred name to use when displaying this provider."
+    },
+    "homedepartment": {
+      "type": "string",
+      "description": "For certain purposes, this can be considered to be the \"home\" or default department for a provider."
+    },
+    "providerid": {
+      "type": "integer",
+      "description": "The ID to be used for this provider. Note that in athenaNet, an individual provider (as defined by a unique NPI) may have multiple provider IDs. For the API, we have collapsed these to a single canonical ID.\n"
+    },
+    "providertypeid": {
+      "type": "string",
+      "description": "This is just the ID (a text string) such as \"NP\" or \"NP S\" for the provider type."
+    },
+    "providerusername": {
+      "type": "string",
+      "description": "The username of the provider."
+    },
+    "supervisingproviderid": {
+      "type": "integer",
+      "description": "The ID of the supervising provider."
+    },
+    "providertype": {
+      "type": "string",
+      "description": "There is a long potential list of provider type in the form \"full name (id)\",  but \"MD\", \"NP\" or \"NP S\" (Nurse Practitioner (Supervising)), \"RES\" (resident), \"EQUIP\", \"DO\", \"PA\" or \"PASUP\" (Physician's Assistant (Supervising)), \"TECH\", \"RN\", LPT\", \"CRNA\" or \"CRNASUP\" (Certified Registered Nurse Anesthesiologist (Supervising)), and MA (Medical Assistant) are among the most common.\n"
+    },
+    "createencounterprovideridlist": {
+      "type": "string",
+      "description": "A list of provider IDs for this provider NPI that will create an encounter when the appointment is checked in  for encounter supported appointment types. Only populated if 'showallproviderids' is set.\n"
+    },
+    "schedulingname": {
+      "type": "string",
+      "description": "The scheduling name for this provider (as used in athenaNet)."
+    },
+    "usualdepartmentid": {
+      "type": "string",
+      "description": "The \"usual\" department for this provider, if SHOWUSUALDEPARTMENTGUESSTHRESHOLD is set."
+    },
+    "createencounteroncheckinyn": {
+      "type": "boolean",
+      "description": "If true, appointments scheduled with this provider will create an encounter when the appointment is checked infor encounter supported appointment types. Only applies to the primary providerid. If the provider has other IDs with the same API, please use 'showallproviderids' to see which IDs create encounters.\n"
+    },
+    "specialty": {
+      "type": "string",
+      "description": "A friendly name for this provider's specialty."
+    },
+    "hideinportalyn": {
+      "type": "boolean",
+      "description": "If set, this provider does not appear in athenaCommunicator's web portal.\n"
+    },
+    "lastname": {
+      "type": "string",
+      "description": "The provider's last name."
+    },
+    "npi": {
+      "description": "The NPI for this provider, if available.",
+      "type": "integer",
+      "format": "int64"
+    },
+    "providergrouplist": {
+      "type": "string",
+      "description": "When showallproviderids is set to true, a list of all provider groups that this provider is registered in. Data is only relevant if a practice is using Provider-Group-Based Data Permissions in their practice.\n"
+    },
+    "federalidnumber": {
+      "type": "string",
+      "description": "The federal ID number for provider, if SHOWFEDERALIDNUMBER is set."
+    },
+    "supervisingproviderusername": {
+      "type": "string",
+      "description": "The username of the supervising provider."
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

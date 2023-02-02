@@ -1,0 +1,75 @@
+{
+  "properties": {
+    "diagnoses": {
+      "type": "array",
+      "items": {
+        "required": [
+          "codeset",
+          "code"
+        ],
+        "properties": {
+          "codeset": {
+            "description": "Codeset for this code (ICD9 or ICD10)",
+            "type": "string"
+          },
+          "code": {
+            "description": "Actual ICD code for this diagnosis",
+            "type": "string"
+          },
+          "description": {
+            "description": "Brief description for this code",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "eventtype": {
+      "description": "The type of this event: START, END, HIDDEN, REACTIVATED, or ENCOUNTER\n",
+      "type": "string"
+    },
+    "source": {
+      "description": "The source of this event: ENCOUNTER or HISTORY\n",
+      "type": "string"
+    },
+    "status": {
+      "description": "The status of this problem event: CHRONIC or ACUTE\n",
+      "type": "string"
+    },
+    "onsetdate": {
+      "description": "The specified onset date for this problem, as entered by the practice. If available this is more accurate than the start date.\n",
+      "type": "string"
+    },
+    "startdate": {
+      "description": "The date this problem event started or was restarted. Uses the onsetdate if available, otherwise uses the date the problem was entered into the system.\n",
+      "type": "string"
+    },
+    "enddate": {
+      "description": "The date this problem event ended or was hidden",
+      "type": "string"
+    },
+    "encounterdate": {
+      "description": "The date of the encounter where a diagnosis matching this problem was used.",
+      "type": "string"
+    },
+    "laterality": {
+      "description": "The laterality of this problem. Can be null, LEFT, RIGHT, or BILATERAL.",
+      "type": "string"
+    },
+    "note": {
+      "description": "The note attached to this event.",
+      "type": "string"
+    },
+    "createddate": {
+      "description": "The date that the user entered this problem.",
+      "type": "string"
+    },
+    "createdby": {
+      "description": "The name of the user who entered this problem.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

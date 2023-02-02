@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "ccda": {
+      "type": "string",
+      "description": "Content of CCDA record for the patient."
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

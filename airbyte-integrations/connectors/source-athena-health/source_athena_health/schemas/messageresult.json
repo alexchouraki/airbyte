@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "messagetype": {
+      "description": "The type of message that was attempted.",
+      "type": "string"
+    },
+    "calltime": {
+      "description": "Date and time of the call attempt.",
+      "type": "string"
+    },
+    "messageresultid": {
+      "description": "Id of the message attempt.",
+      "type": "integer"
+    },
+    "result": {
+      "description": "A description of what happened during the call attempt.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

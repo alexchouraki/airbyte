@@ -1,0 +1,14 @@
+{
+  "required": [
+    "patientId"
+  ],
+  "properties": {
+    "patientid": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "PatientId"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

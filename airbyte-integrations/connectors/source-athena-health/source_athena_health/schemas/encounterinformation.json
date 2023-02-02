@@ -1,0 +1,138 @@
+{
+  "required": [
+    "encounterid",
+    "diagnoses"
+  ],
+  "properties": {
+    "encounterid": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "EncounterId",
+      "description": "Athena ID for this encounter"
+    },
+    "diagnoses": {
+      "type": "array",
+      "x-ms-client-name": "Diagnoses",
+      "items": {
+        "required": [
+          "diagnosisid"
+        ],
+        "properties": {
+          "diagnosisid": {
+            "description": "Athena ID for this diagnosis",
+            "type": "integer"
+          },
+          "icdcodes": {
+            "type": "array",
+            "description": "message",
+            "items": {
+              "required": [
+                "codeset",
+                "code"
+              ],
+              "properties": {
+                "codeset": {
+                  "description": "Codeset for this code (ICD9 or ICD10)",
+                  "type": "string"
+                },
+                "code": {
+                  "description": "Actual ICD code for this diagnosis",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "Brief description for this code",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "snomedcode": {
+            "description": "SNOMED Code for this diagnosis",
+            "type": "integer"
+          },
+          "note": {
+            "description": "The note entered for this diagnosis.",
+            "type": "string"
+          },
+          "description": {
+            "description": "Brief description for this SNOMED Code",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "appointmentid": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Athena appointment ID resulting in this encounter"
+    },
+    "departmentid": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "DepartmentId",
+      "description": "The athena department ID of this encounter"
+    },
+    "encountervisitname": {
+      "type": "string",
+      "description": "The visit name for this encounter"
+    },
+    "encountertype": {
+      "type": "string",
+      "description": "Type of encounter (FLOWSHEET, ORDERSONLY, VISIT, etc.). By default only VISIT and ORDERSONLY are shown, use INCLUDEALLtypeS flag to see others.\n"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of this encounter (CLOSED, OPEN, PEND). By default only OPEN, CLOSED, and REVIEW statuses are shown, use INCLUDEALLSTATUSES flag to see others.\n"
+    },
+    "patientlocationid": {
+      "type": "integer",
+      "description": "Athena ID for the patient location"
+    },
+    "patientlocation": {
+      "type": "string",
+      "description": "Patient location"
+    },
+    "patientstatusid": {
+      "type": "integer",
+      "description": "Athena ID for the patient status"
+    },
+    "patientstatus": {
+      "type": "string",
+      "description": "Patient status"
+    },
+    "encounterdate": {
+      "type": "string",
+      "description": "Date when this encounter occured"
+    },
+    "stage": {
+      "type": "string",
+      "description": "Last stage of the encounter"
+    },
+    "providerid": {
+      "type": "integer",
+      "description": "The ID of the provider for this encounter"
+    },
+    "providerfirstname": {
+      "type": "string",
+      "description": "First name of the provider for this encounter"
+    },
+    "providerlastname": {
+      "type": "string",
+      "description": "Last name of the provider for this encounter"
+    },
+    "providerphone": {
+      "type": "string",
+      "description": "Phone number of the provider for this encounter"
+    },
+    "lastupdated": {
+      "type": "string",
+      "description": "The date the encounter was last updated"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

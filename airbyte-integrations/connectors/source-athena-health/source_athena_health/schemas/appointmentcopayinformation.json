@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "insurancecopay": {
+      "description": "The expected copay based on the patient's primary insurance and appointment type.",
+      "type": "string"
+    },
+    "collectedforappointment": {
+      "description": "Copay payments that have already been collected for this specific appointment.",
+      "type": "string"
+    },
+    "collectedforother": {
+      "description": "Copay payments that have already been collected for this patient, but that have not yet been applied to any specific appointment.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

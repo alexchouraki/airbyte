@@ -1,0 +1,37 @@
+{
+  "required": [
+    "iscoordinatorsender",
+    "hasclinicals"
+  ],
+  "properties": {
+    "iscoordinatorsender": {
+      "type": "boolean"
+    },
+    "hasclinicals": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "golivedate": {
+      "type": "string"
+    },
+    "experiencemode": {
+      "type": "string"
+    },
+    "hascommunicator": {
+      "type": "boolean"
+    },
+    "iscoordinatorreceiver": {
+      "type": "boolean"
+    },
+    "hascollector": {
+      "type": "boolean"
+    },
+    "practiceid": {
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

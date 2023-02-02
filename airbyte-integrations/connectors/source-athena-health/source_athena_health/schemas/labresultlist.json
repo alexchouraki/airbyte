@@ -1,0 +1,156 @@
+{
+  "required": [
+    "totalcount",
+    "results"
+  ],
+  "properties": {
+    "totalcount": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "TotalCount"
+    },
+    "results": {
+      "type": "array",
+      "x-ms-client-name": "Results",
+      "items": {
+        "required": [
+          "labresultid"
+        ],
+        "properties": {
+          "analytes": {
+            "type": "array",
+            "description": "Individual lab result observations/analytes",
+            "items": {
+              "properties": {
+                "analyteid": {
+                  "description": "Athena ID for the given lab result observation/analyte",
+                  "type": "integer",
+                  "format": "int32",
+                  "x-ms-client-name": "AnalyteId"
+                },
+                "analytename": {
+                  "description": "Name / description specific to this analyte",
+                  "type": "string"
+                },
+                "loinc": {
+                  "description": "Logical Observation Identifiers Names and Codes ID, if available",
+                  "type": "string"
+                },
+                "value": {
+                  "description": "Value recorded for this observation",
+                  "type": "string"
+                },
+                "units": {
+                  "description": "Units for this analyte entry, if provided by the lab",
+                  "type": "string"
+                },
+                "analytedate": {
+                  "description": "Date when this observation was recorded",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "General description of the lab result test",
+                  "type": "string"
+                },
+                "note": {
+                  "description": "Additional note for this analyte, if applicable",
+                  "type": "string"
+                },
+                "abnormalflag": {
+                  "description": "Status indicator of the measurement relative to normal (low, high, normal, abnormal)",
+                  "type": "string"
+                },
+                "abnormalhl7code": {
+                  "description": "The HL7 code related to the abnormal flag.",
+                  "type": "string"
+                },
+                "abnormalhl7name": {
+                  "description": "The HL7 description related to the abnormal flag.",
+                  "type": "string"
+                },
+                "valuestatus": {
+                  "description": "DEPRECATED -- use \"abnormalflag\" instead. Status indicator of the measurement relative to normal (low, high, normal, abnormal)",
+                  "type": "string"
+                },
+                "referencerange": {
+                  "description": "Reference range of values accepted as normal for this observation",
+                  "type": "string"
+                },
+                "resultstatus": {
+                  "description": "The status of the result (e.g., \"final\", \"preliminary\", \"corrected\", etc.)",
+                  "type": "string"
+                },
+                "labresultstatus": {
+                  "description": "The status of the underlying lab result",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "providerid": {
+            "description": "The provider ID for this document.",
+            "type": "integer"
+          },
+          "attachmentexists": {
+            "description": "This flag depicts if the lab result has a scanned document attachment or not.",
+            "type": "boolean"
+          },
+          "labresultdatetime": {
+            "description": "The observation date and time associated with this lab result. Returned in mm/dd/yyyy hh24:mi:ss format.\n",
+            "type": "string"
+          },
+          "priority": {
+            "description": "Document priority, when available. 1 is high, 2 is normal. Some labs use other numbers or characters that are lab-specific.\n",
+            "type": "string"
+          },
+          "patientnote": {
+            "description": "The external note for the patient.",
+            "type": "string"
+          },
+          "internalnote": {
+            "description": "The 'Internal Note' attached to this document.",
+            "type": "string"
+          },
+          "facilityid": {
+            "description": "The ID of the clinical provider associated with this clinical document. Clinical providers are a master list of providers throughout the country. These include providers as well as radiology centers, labs and pharmacies.\n",
+            "type": "integer"
+          },
+          "labresultid": {
+            "description": "Athena ID for this lab result",
+            "type": "integer"
+          },
+          "orderid": {
+            "description": "The athena ID of the associated order document",
+            "type": "string"
+          },
+          "description": {
+            "description": "Description for this lab result",
+            "type": "string"
+          },
+          "labresultloinc": {
+            "description": "The LOINC for the result document or associated order.",
+            "type": "string"
+          },
+          "labresultdate": {
+            "description": "Observation date associated with this lab result",
+            "type": "string"
+          },
+          "labresultnote": {
+            "description": "Additional note associated with this lab result, if any",
+            "type": "string"
+          },
+          "resultstatus": {
+            "description": "The status of the result (e.g., \"final\", \"preliminary\", \"corrected\", etc.)",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

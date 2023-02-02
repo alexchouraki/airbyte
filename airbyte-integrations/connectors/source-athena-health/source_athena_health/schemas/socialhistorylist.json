@@ -1,0 +1,75 @@
+{
+  "properties": {
+    "sectionnote": {
+      "type": "string"
+    },
+    "templates": {
+      "type": "array",
+      "items": {
+        "required": [
+          "templateid",
+          "templatename"
+        ],
+        "properties": {
+          "templateid": {
+            "type": "integer",
+            "description": "ID for this social history template"
+          },
+          "templatename": {
+            "type": "string",
+            "description": "Name for this social history template"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "answer": {
+            "type": "string",
+            "description": "The patient answer to this question"
+          },
+          "questionid": {
+            "type": "integer",
+            "description": "Unique ID for this question within this template."
+          },
+          "key": {
+            "type": "string",
+            "description": "Unique key for this question, can exist in multiple templates."
+          },
+          "question": {
+            "type": "string",
+            "description": "Human readable question"
+          },
+          "ordering": {
+            "type": "integer",
+            "description": "Display ordering for this question within this template"
+          },
+          "templateid": {
+            "type": "integer",
+            "description": "The template where this question is listed. If it exists on multiple templates, then only one of them."
+          },
+          "note": {
+            "type": "string",
+            "description": "The notes associated with this question."
+          },
+          "lastupdated": {
+            "type": "string",
+            "description": "The date this answer was last updated (or first answered if never updated)."
+          },
+          "notelastupdateddate": {
+            "type": "string",
+            "description": "The date this note was last updated (or first added if never updated)."
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

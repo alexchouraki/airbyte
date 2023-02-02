@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "diagnosisid": {
+      "description": "A unique ID related to this diagnosis.",
+      "type": "integer"
+    },
+    "diagnosisdescription": {
+      "description": "A description of this diagnosis.",
+      "type": "string"
+    },
+    "diagnosisrawcode": {
+      "description": "The raw ICD-9 code. This will migrate to ICD-10 in the future.",
+      "type": "string"
+    },
+    "diagnosiscategory": {
+      "description": "The category for this diagnosis.",
+      "type": "string"
+    },
+    "deleteddiagnosis": {
+      "description": "In certain cases, diagnoses may be added and then removed from a particular claim. In normal circumstances, this will be false. However, if a diagnosis was removed, this will be true.\n",
+      "type": "string"
+    },
+    "diagnosiscodeset": {
+      "description": "Either ICD9 or ICD10.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

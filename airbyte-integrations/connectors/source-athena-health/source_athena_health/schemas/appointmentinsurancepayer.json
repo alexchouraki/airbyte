@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "primarypatientinsuranceid": {
+      "description": "Id of the payer",
+      "type": "string"
+    },
+    "secondarypatientinsuranceid": {
+      "description": "Id of the payer",
+      "type": "string"
+    },
+    "note": {
+      "description": "The note that is attached to this status.",
+      "type": "string"
+    },
+    "status": {
+      "description": "The status associated with this responsible payer.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

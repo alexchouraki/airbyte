@@ -1,0 +1,26 @@
+{
+  "required": [
+    "lastmodifieddatetime",
+    "assessmenttext",
+    "lastmodifiedby"
+  ],
+  "properties": {
+    "lastmodifieddatetime": {
+      "type": "string",
+      "x-ms-client-name": "LastModifedDateTime",
+      "description": "The datetime that this text was last updated."
+    },
+    "assessmenttext": {
+      "type": "string",
+      "x-ms-client-name": "AssessmentText",
+      "description": "The text of the Assessment / Plan section. Not all practices use this. Some use it extensively with HTML templates.\n"
+    },
+    "lastmodifiedby": {
+      "type": "string",
+      "x-ms-client-name": "LastModifiedBy",
+      "description": "The username of the user who last updated this text."
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

@@ -1,0 +1,56 @@
+{
+  "required": [
+    "totalcount",
+    "practiceinfo"
+  ],
+  "properties": {
+    "totalcount": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "TotalCount"
+    },
+    "practiceinfo": {
+      "type": "array",
+      "x-ms-client-name": "PracticeInfo",
+      "items": {
+        "required": [
+          "iscoordinatorsender",
+          "hasclinicals"
+        ],
+        "properties": {
+          "iscoordinatorsender": {
+            "type": "boolean"
+          },
+          "hasclinicals": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "golivedate": {
+            "type": "string"
+          },
+          "experiencemode": {
+            "type": "string"
+          },
+          "hascommunicator": {
+            "type": "boolean"
+          },
+          "iscoordinatorreceiver": {
+            "type": "boolean"
+          },
+          "hascollector": {
+            "type": "boolean"
+          },
+          "practiceid": {
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

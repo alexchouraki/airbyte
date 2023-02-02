@@ -1,0 +1,116 @@
+{
+  "properties": {
+    "readings": {
+      "type": "array",
+      "description": "List of vital attribute readings. One entry per attribute (so the temperature and where the temperature was taken are two different readings, tied together by the readingid\n",
+      "items": {
+        "type": "array",
+        "items": {
+          "required": [
+            "vitalid"
+          ],
+          "properties": {
+            "percentilespec": {
+              "properties": {
+                "high": {
+                  "description": "The highest value the y value could be.",
+                  "type": "integer"
+                },
+                "highordinal": {
+                  "description": "Ordinal of the high value.",
+                  "type": "string"
+                },
+                "low": {
+                  "description": "The lowest value that y could be.",
+                  "type": "integer"
+                },
+                "lowordinal": {
+                  "description": "Ordinal of the lowest value.",
+                  "type": "string"
+                },
+                "prefix": {
+                  "description": "Indicator of less than or greater. Possible values: (>,<)\n",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            },
+            "vitalid": {
+              "description": "Unique ID for this vital attribute reading. Used to update/delete this reading.",
+              "type": "integer"
+            },
+            "clinicalelementid": {
+              "description": "Key used to identify this particular vital attribute",
+              "type": "string"
+            },
+            "source": {
+              "description": "The source of this reading.",
+              "type": "string"
+            },
+            "sourceid": {
+              "description": "External key to source.",
+              "type": "integer"
+            },
+            "readingid": {
+              "description": "Numeric key used to tie related and distinguish separate readings. So the diastolic and systolic blood pressure should have the same readingid.\n",
+              "type": "integer"
+            },
+            "readingtaken": {
+              "description": "Date that the reading was taken.",
+              "type": "string"
+            },
+            "unit": {
+              "description": "Unit that describes this vital's value.",
+              "type": "string"
+            },
+            "value": {
+              "description": "The value of this reading. NOTE: for numeric values, the units are always in the 'native' units per the configuration.\n",
+              "type": "string"
+            },
+            "code": {
+              "description": "Code indentifier for the reading.",
+              "type": "string"
+            },
+            "codeset": {
+              "description": "Codeset of the code.",
+              "type": "string"
+            },
+            "codedescription": {
+              "description": "Description of the code identifier.",
+              "type": "string"
+            },
+            "createdby": {
+              "description": "The athenaNet username of the person who entered the vital.",
+              "type": "string"
+            },
+            "createddate": {
+              "description": "The date this vital was entered into the chart. Returned in mm/dd/yyyy hh24:mi:ss format.\n",
+              "type": "string"
+            },
+            "isgraphable": {
+              "description": "Flag indicating if this vital is graphable.",
+              "type": "boolean"
+            }
+          },
+          "$schema": "http://json-schema.org/schema#",
+          "type": "object"
+        }
+      }
+    },
+    "key": {
+      "description": "Key for this vital group. E.g., HEIGHT.",
+      "type": "string"
+    },
+    "abbreviation": {
+      "description": "Short human-readable string for this vital group. E.g., Ht.",
+      "type": "string"
+    },
+    "ordering": {
+      "description": "Configured order for this vital group",
+      "type": "integer"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

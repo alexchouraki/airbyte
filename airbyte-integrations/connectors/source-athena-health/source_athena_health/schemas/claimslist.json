@@ -1,0 +1,176 @@
+{
+  "required": [
+    "totalcount",
+    "claims"
+  ],
+  "properties": {
+    "totalcount": {
+      "type": "integer",
+      "format": "int32",
+      "x-ms-client-name": "TotalCount"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "referringproviderid": {
+            "description": "The referring provider ID for this claim. See /referringproviders. This is not the same as the ID from the /providers call.",
+            "type": "integer"
+          },
+          "primaryinsurancepayer": {
+            "properties": {
+              "primarypatientinsuranceid": {
+                "description": "Id of the payer",
+                "type": "string"
+              },
+              "secondarypatientinsuranceid": {
+                "description": "Id of the payer",
+                "type": "string"
+              },
+              "note": {
+                "description": "The note that is attached to this status.",
+                "type": "string"
+              },
+              "status": {
+                "description": "The status associated with this responsible payer.",
+                "type": "string"
+              }
+            },
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object"
+          },
+          "secondaryinsurancepayer": {
+            "properties": {
+              "primarypatientinsuranceid": {
+                "description": "Id of the payer",
+                "type": "string"
+              },
+              "secondarypatientinsuranceid": {
+                "description": "Id of the payer",
+                "type": "string"
+              },
+              "note": {
+                "description": "The note that is attached to this status.",
+                "type": "string"
+              },
+              "status": {
+                "description": "The status associated with this responsible payer.",
+                "type": "string"
+              }
+            },
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object"
+          },
+          "diagnoses": {
+            "description": "message",
+            "type": "array",
+            "items": {
+              "properties": {
+                "diagnosisid": {
+                  "description": "A unique ID related to this diagnosis.",
+                  "type": "integer"
+                },
+                "diagnosisdescription": {
+                  "description": "A description of this diagnosis.",
+                  "type": "string"
+                },
+                "diagnosisrawcode": {
+                  "description": "The raw ICD-9 code. This will migrate to ICD-10 in the future.",
+                  "type": "string"
+                },
+                "diagnosiscategory": {
+                  "description": "The category for this diagnosis.",
+                  "type": "string"
+                },
+                "deleteddiagnosis": {
+                  "description": "In certain cases, diagnoses may be added and then removed from a particular claim. In normal circumstances, this will be false. However, if a diagnosis was removed, this will be true.\n",
+                  "type": "string"
+                },
+                "diagnosiscodeset": {
+                  "description": "Either ICD9 or ICD10.",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "claimcreateddate": {
+            "description": "The date the claim was created.",
+            "type": "string"
+          },
+          "procedures": {
+            "description": "Procedures is an array of all procedures. /ccda is a better clinical representation. These fields are:\n",
+            "type": "array",
+            "items": {
+              "properties": {
+                "procedurecategory": {
+                  "description": "The category name associated with this procedure.",
+                  "type": "string"
+                },
+                "allowablemin": {
+                  "description": "The minimum amount expected from payer for all services from this procedure.",
+                  "type": "string"
+                },
+                "proceduredescription": {
+                  "description": "A description of this procedure.",
+                  "type": "string"
+                },
+                "chargeamount": {
+                  "description": "The amount charged for this procedure.",
+                  "type": "string"
+                },
+                "transactionid": {
+                  "description": "The ID of the last transaction associated with the claim.",
+                  "type": "integer"
+                },
+                "procedurecode": {
+                  "description": "The CPT code associated with this procedure.",
+                  "type": "string"
+                },
+                "allowablemax": {
+                  "description": "The maximum amount expected from payer for all services from this procedure.",
+                  "type": "string"
+                },
+                "allowableamount": {
+                  "description": "The total amount expected from payer for all services from this procedure.",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "billedservicedate": {
+            "description": "The billed date of service.",
+            "type": "string"
+          },
+          "billedproviderid": {
+            "description": "The provider ID of the billing provider for this claim.",
+            "type": "integer"
+          },
+          "appointmentid": {
+            "description": "The appointment ID associated with this claim.",
+            "type": "integer"
+          },
+          "chargeamount": {
+            "description": "The total amount billed for all services from this claim.",
+            "type": "string"
+          },
+          "transactionid": {
+            "description": "A unique ID for the primary transaction this claim represents. May be useful for debugging.",
+            "type": "integer"
+          },
+          "claimid": {
+            "description": "athenaNet's internal ID for this claim, specific to the practice.",
+            "type": "integer"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

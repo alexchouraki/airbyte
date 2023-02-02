@@ -1,0 +1,21 @@
+{
+  "required": [
+    "contracts"
+  ],
+  "properties": {
+    "availablebalance": {
+      "description": "The available balance on this contract.",
+      "type": "string"
+    },
+    "contractclass": {
+      "description": "The type of contract. For example, \"ONEYEAR,\"",
+      "type": "string"
+    },
+    "maxamount": {
+      "description": "The maximum allowed amount for this contract.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

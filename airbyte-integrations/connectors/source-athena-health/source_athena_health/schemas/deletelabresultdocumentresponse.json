@@ -1,0 +1,21 @@
+{
+  "required": [
+    "success"
+  ],
+  "properties": {
+    "labresultid": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "errormessage": {
+      "type": "string",
+      "description": "If the operation failed, this will contain an error message."
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Returns true/false if the operation was successful."
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

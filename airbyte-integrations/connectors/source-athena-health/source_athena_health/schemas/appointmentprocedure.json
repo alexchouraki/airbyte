@@ -1,0 +1,38 @@
+{
+  "properties": {
+    "procedurecategory": {
+      "description": "The category name associated with this procedure.",
+      "type": "string"
+    },
+    "allowablemin": {
+      "description": "The minimum amount expected from payer for all services from this procedure.",
+      "type": "string"
+    },
+    "proceduredescription": {
+      "description": "A description of this procedure.",
+      "type": "string"
+    },
+    "chargeamount": {
+      "description": "The amount charged for this procedure.",
+      "type": "string"
+    },
+    "transactionid": {
+      "description": "The ID of the last transaction associated with the claim.",
+      "type": "integer"
+    },
+    "procedurecode": {
+      "description": "The CPT code associated with this procedure.",
+      "type": "string"
+    },
+    "allowablemax": {
+      "description": "The maximum amount expected from payer for all services from this procedure.",
+      "type": "string"
+    },
+    "allowableamount": {
+      "description": "The total amount expected from payer for all services from this procedure.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

@@ -1,0 +1,252 @@
+{
+  "required": [
+    "nomedicationsreported",
+    "medications",
+    "lastupdated"
+  ],
+  "properties": {
+    "nomedicationsreported": {
+      "description": "Whether the patient explicitly has no reported medications",
+      "type": "boolean"
+    },
+    "medications": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "required": [
+            "events",
+            "medications",
+            "medicationid"
+          ],
+          "properties": {
+            "events": {
+              "type": "array",
+              "description": "The list of events for this medication. Can be START, END, ORDER, ENTER, FILL, or HIDE.\n",
+              "items": {
+                "required": [
+                  "type",
+                  "eventdate"
+                ],
+                "properties": {
+                  "type": {
+                    "description": "The event type. Can be START, END, ORDER, ENTER, FILL, or HIDE.",
+                    "type": "string"
+                  },
+                  "eventdate": {
+                    "description": "The date this event occurred",
+                    "type": "string"
+                  },
+                  "userdisplayname": {
+                    "description": "The display name for the user most relevant for this event. May be null.",
+                    "type": "string"
+                  }
+                },
+                "$schema": "http://json-schema.org/schema#",
+                "type": "object"
+              }
+            },
+            "structuredsig": {
+              "required": [
+                "dosageaction",
+                "dosagequantityvalue",
+                "dosagequantityunit"
+              ],
+              "properties": {
+                "dosageaction": {
+                  "description": "How the medication is taken. Examples are Chew, Take, Inhale, etc.",
+                  "type": "string"
+                },
+                "dosagequantityvalue": {
+                  "description": "How many of this med is taken.",
+                  "type": "number"
+                },
+                "dosagequantityunit": {
+                  "description": "The unit of the quantity. Example: tablets, sprays, etc.\n",
+                  "type": "string"
+                },
+                "dosagefrequencyvalue": {
+                  "description": "How many times (in the given time unit) this should be taken.",
+                  "type": "number"
+                },
+                "dosagefrequencyunit": {
+                  "description": "The unit of the frequency. Example: per day, per week.\n",
+                  "type": "string"
+                },
+                "dosagefrequencydescription": {
+                  "description": "A standardized patient-friendly frequency. Example: 6 per day becomes \"every 4 hours\".\n",
+                  "type": "string"
+                },
+                "dosageroute": {
+                  "description": "How this medication is taken. Example: oral, inhalation, intranasal, etc.\n",
+                  "type": "string"
+                },
+                "dosageadditionalinstructions": {
+                  "description": "Additional instructions. Example: with meals\n",
+                  "type": "string"
+                },
+                "dosagedurationvalue": {
+                  "description": "How many duration time units this medication should be taken for.",
+                  "type": "integer"
+                },
+                "dosagedurationunit": {
+                  "description": "The unit of the duration. Example: days. So take this for days.\n",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            },
+            "medicationentryid": {
+              "description": "Primary ID for this medication entry. Those starting with C are clinical prescriptions, and those starting with H are historical (entered, downloaded, etc).\n",
+              "type": "string"
+            },
+            "medicationid": {
+              "description": "Athena ID for this medication.",
+              "type": "integer"
+            },
+            "medication": {
+              "description": "The name of the medication.",
+              "type": "string"
+            },
+            "isstructuredsig": {
+              "description": "Whether the sig for this entry is structured.",
+              "type": "boolean"
+            },
+            "unstructuredsig": {
+              "description": "The unstructured sig for this medication, if any. If there is a structured sig, this will contain the formatted version of that sig.\n",
+              "type": "string"
+            },
+            "source": {
+              "description": "How this medication was entered. This can be the ordering provider, a medication history download (express scripts, medco, etc),  ATHENA (which means it was entered manually), etc.\n",
+              "type": "string"
+            },
+            "status": {
+              "description": "The status of this medication. Medications in PEND status are associated with approved future orders and have not yet been submitted.\n",
+              "type": "string"
+            },
+            "organclass": {
+              "description": "The organ class for this medication. This is equivalent to a medication class.",
+              "type": "string"
+            },
+            "therapeuticclass": {
+              "description": "The therapeutic class for this medication. This is equivalent to a medication subclass.",
+              "type": "string"
+            },
+            "futuresubmitdate": {
+              "description": "The date a medication will be submitted. Included if the medication is in PEND status and attached to a approved future order.",
+              "type": "string"
+            },
+            "encounterid": {
+              "description": "If this was a prescription, this contains the ID of the encounter where it was ordered or administered",
+              "type": "integer"
+            },
+            "createdby": {
+              "description": "The athenaNet username of the person who entered or ordered the medication. Downloaded medications have INTERFACE for this field.\n",
+              "type": "string"
+            },
+            "approvedby": {
+              "description": "For clinical prescriptions, the athenaNet username of the person who approved this prescription.",
+              "type": "string"
+            },
+            "billingndc": {
+              "description": "The billing NDC code for this medication.",
+              "type": "string"
+            },
+            "orderingmode": {
+              "description": "The ordering mode for prescriptions. Can be PRESCRIBE, DISPENSE, or ADMINISTER.",
+              "type": "string"
+            },
+            "quantity": {
+              "description": "The total quantity prescribed, dispensed, administered. This is not currently available for historical (downloaded) medications.",
+              "type": "integer"
+            },
+            "quantityunit": {
+              "description": "The unit of the quantity. Example: tablets, sprays, etc.\n",
+              "type": "string"
+            },
+            "refillsallowed": {
+              "description": "The number of refills allowed when this medication was ordered.",
+              "type": "integer"
+            },
+            "issafetorenew": {
+              "description": "Is this medication safe to renew?",
+              "type": "boolean"
+            },
+            "stopreason": {
+              "description": "The reason why this medication was stopped.",
+              "type": "string"
+            },
+            "providernote": {
+              "description": "Non-patient facing note for ths prescription. Labeled \"internal note\" in the UI.",
+              "type": "string"
+            },
+            "patientnote": {
+              "description": "Patient-facing note for this prescription. Labeled \"note\" in the UI.",
+              "type": "string"
+            },
+            "pharmacy": {
+              "description": "The name of the pharmacy where this medication was filled.",
+              "type": "string"
+            },
+            "pharmacyncpdpid": {
+              "description": "The NCPDP ID of the pharmacy for this medication.. See http://www.ncpdp.org/ for details.",
+              "type": "string"
+            },
+            "prescribedby": {
+              "description": "The user who prescribed this medication.",
+              "type": "string"
+            },
+            "ndcoptions": {
+              "description": "The list of NDC numbers that correspond to this medication.",
+              "type": "string"
+            },
+            "rxnorm": {
+              "description": "The list of RxNorm Identifiers that correspond to this medication. This list may contain both branded and generic identifiers",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "route": {
+              "description": "The route for the prescription.",
+              "type": "string"
+            }
+          },
+          "$schema": "http://json-schema.org/schema#",
+          "type": "object"
+        }
+      }
+    },
+    "sectionnote": {
+      "description": "A section-wide note",
+      "type": "string"
+    },
+    "lastupdated": {
+      "description": "The last time any of the medications were updated",
+      "type": "string"
+    },
+    "patientdownloadconsent": {
+      "description": "Whether or not the patient has consented to have their medication history downloaded. There are plans to deprecate this field.",
+      "type": "boolean"
+    },
+    "patientneedsdownloadconsent": {
+      "description": "Whether or not the patient needs to consent to have medication history downloaded. This will be true if either the patient has not currently consented, or the practice is not enabled for these downloads. This field is typically used when determining whether to message to the patient that they have not consented to these downloads. Note that regardless of this setting, medication history that has already been downloaded will remain available.\n",
+      "type": "boolean"
+    },
+    "lastdownloadeddate": {
+      "description": "The time of the last attempted medication history download from SureScripts.",
+      "type": "string"
+    },
+    "lastdownloaddenied": {
+      "description": "BETA FIELD: Whether or not the last medication history download was denied.\n",
+      "type": "boolean"
+    },
+    "lastdownloaddenialreason": {
+      "description": "BETA FIELD: The reason the last medication history download was denied.\n",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

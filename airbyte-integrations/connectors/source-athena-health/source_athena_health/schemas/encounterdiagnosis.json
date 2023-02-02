@@ -1,0 +1,208 @@
+{
+  "properties": {
+    "diagnosisicd": {
+      "type": "array",
+      "description": "The matching ICD9 or ICD10 codes for this diagnosis, where available.",
+      "items": {
+        "required": [
+          "codeset",
+          "code"
+        ],
+        "properties": {
+          "codeset": {
+            "description": "Codeset for this code (ICD9 or ICD10)",
+            "type": "string"
+          },
+          "code": {
+            "description": "Actual ICD code for this diagnosis",
+            "type": "string"
+          },
+          "description": {
+            "description": "Brief description for this code",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "orders": {
+      "type": "array",
+      "description": "List of diagnoses for this encounter",
+      "items": {
+        "properties": {
+          "declinedreason": {
+            "type": "array",
+            "description": "List of codes indicating why the order was not given. If this field is not present, the order was not declined. If the array is empty, no reason has been chosen.\n",
+            "items": {
+              "required": [
+                "codeset",
+                "code"
+              ],
+              "properties": {
+                "codeset": {
+                  "description": "Codeset for this code (ICD9 or ICD10)",
+                  "type": "string"
+                },
+                "code": {
+                  "description": "Actual ICD code for this diagnosis",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "Brief description for this code",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "contraindicationreason": {
+            "type": "array",
+            "description": "List of codes indicating why the order was contraindicated (for vaccines only). If this field is not present, the order does not contain a contraindication reason.\n",
+            "items": {
+              "required": [
+                "codeset",
+                "code"
+              ],
+              "properties": {
+                "codeset": {
+                  "description": "Codeset for this code (ICD9 or ICD10)",
+                  "type": "string"
+                },
+                "code": {
+                  "description": "Actual ICD code for this diagnosis",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "Brief description for this code",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "externalcodes": {
+            "type": "array",
+            "description": "When available, contains how this order maps to external vocabularies like LOINC, CVX, SNOMED, RXNORM, etc.\n",
+            "items": {
+              "required": [
+                "codeset",
+                "code"
+              ],
+              "properties": {
+                "codeset": {
+                  "description": "Codeset for this code (ICD9 or ICD10)",
+                  "type": "string"
+                },
+                "code": {
+                  "description": "Actual ICD code for this diagnosis",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "Brief description for this code",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "createduser": {
+            "description": "The username of the person who created the order.",
+            "type": "string"
+          },
+          "lastmodifiedby": {
+            "description": "The username of the person who last modified the order.",
+            "type": "string"
+          },
+          "lastmodifieddatetime": {
+            "description": "The date this order was last modified.",
+            "type": "string"
+          },
+          "orderid": {
+            "description": "The order (aka document) ID for this order.",
+            "type": "integer"
+          },
+          "declinedreasontext": {
+            "description": "The user-facing description of the reason the order was not given.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A human readable description for this order",
+            "type": "string"
+          },
+          "class": {
+            "description": "The primary class of this order -- PRESCRIPTION, VACCINE, LAB, IMAGING, PATIENTINFO, etc.\n",
+            "type": "string"
+          },
+          "classdescription": {
+            "description": "The human-readable description of this document class, including sub class (prescription - new vs. prescription - renewal).\n",
+            "type": "string"
+          },
+          "ordertypeid": {
+            "description": "The athena ID for this type of order. Can be used to create another order of this type.",
+            "type": "integer"
+          },
+          "ordertype": {
+            "description": "The type of this order (Lab, Vaccine, etc.)",
+            "type": "string"
+          },
+          "dateordered": {
+            "description": "The timestamp when the order was created.",
+            "type": "string"
+          },
+          "orderingprovider": {
+            "description": "The username of the ordering provider, which is different than the ordering user -- who may be an intake nurse for example.\n",
+            "type": "string"
+          },
+          "assigneduser": {
+            "description": "The username of the user who this order task is currently assigned to for further processing as needed.",
+            "type": "string"
+          },
+          "priority": {
+            "description": "Priority of a order.",
+            "type": "integer"
+          },
+          "status": {
+            "description": "The status the document is in (PEND, CLOSED, SUBMIT, SUBMITTED, etc).\n",
+            "type": "string"
+          },
+          "documentationonly": {
+            "description": "If true, this order is here just as a record, and does not need to actually go out.",
+            "type": "boolean"
+          },
+          "quantityvalue": {
+            "description": "The dosage quantity value.",
+            "type": "string"
+          },
+          "refills": {
+            "description": "The number of refills allowed.",
+            "type": "string"
+          },
+          "futuresubmitdate": {
+            "description": "The date this order will be submitted.",
+            "type": "string"
+          },
+          "ndc": {
+            "description": "The National Drug Code for the order",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "diagnosissnomed": {
+      "description": "The SNOMED code for this diagnosis. 0 means No Diagnosis.",
+      "type": "integer"
+    },
+    "diagnosis": {
+      "description": "The name of the diagnosis",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

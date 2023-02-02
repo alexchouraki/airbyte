@@ -1,0 +1,508 @@
+{
+  "properties": {
+    "homeboundyn": {
+      "type": "boolean",
+      "description": "If the patient is homebound, this is true."
+    },
+    "assignedsexatbirth": {
+      "type": "string",
+      "description": "Sex that this patient was assigned at birth."
+    },
+    "altfirstname": {
+      "type": "string",
+      "description": "Alternate first name that differs from legal name."
+    },
+    "ethnicitycode": {
+      "type": "string",
+      "description": "Ethnicity of the patient, using the 2.16.840.1.113883.5.50 codeset. See http://www.hl7.org/implement/standards/fhir/terminologies-v3.html Special case: use \"declined\" to indicate that the patient declined to answer.\n"
+    },
+    "industrycode": {
+      "type": "integer",
+      "description": "Industry of the patient, using the US Census industry code (code system 2.16.840.1.113883.6.310). \"other\" can be used as well."
+    },
+    "language6392code": {
+      "type": "string",
+      "description": "Language of the patient, using the ISO 639.2 code. (http://www.loc.gov/standards/iso639-2/php/code_list.php; \"T\" or terminology code) Special case: use \"declined\" to indicate that the patient declined to answer.\n"
+    },
+    "localpatientid": {
+      "type": "string",
+      "description": "Given showlocalpatientid is true, comma separated local patient id will be returned, if patient id is enterprise id else given patient id will be displayed."
+    },
+    "deceaseddate": {
+      "type": "string",
+      "description": "If present, the date on which a patient died."
+    },
+    "firstappointment": {
+      "type": "string",
+      "description": "The first appointment for this patient, excluding cancelled or no-show appointments. (mm/dd/yyyy h24:mi)"
+    },
+    "primaryproviderid": {
+      "type": "integer",
+      "description": "The \"primary\" provider for this patient, if set."
+    },
+    "genderidentityother": {
+      "type": "string",
+      "description": "If a patient does not identify with any prescribed gender identity choice, this field stores the patient-provided description of gender identity."
+    },
+    "portalstatus": {
+      "type": "array",
+      "description": "Portal status details. See /patients/{patientid}/portalstatus for details.",
+      "items": {
+        "properties": {
+          "familyregisteredyn": {
+            "description": "Is there a family member registered with access to this patient.",
+            "type": "boolean"
+          },
+          "lastloginentity": {
+            "description": "Either \"PATIENT\" or \"FAMILY\", the last entity who accessed this patient.",
+            "type": "string"
+          },
+          "noportalyn": {
+            "description": "The privacy setting for blocking the patient from the portal is set.",
+            "type": "boolean"
+          },
+          "portalregistrationdate": {
+            "description": "The date the patient registered for the portal.",
+            "type": "string"
+          },
+          "entitytodisplay": {
+            "description": "Either \"FAMILY\" or \"PATIENT\".",
+            "type": "string"
+          },
+          "status": {
+            "description": "The status of the patient. Possible statuses: REGISTERED: The patient is registered for the portal. NOTREGISTERED: The patient is not registered for the portal. FAMILYLOGIN: This patient is set up for a family member to login. NOPORTAL: The privacy setting for blocking the patient from the portal is set. BLOCKEDFAILEDLOGINS: The patient is blocked because of failed login attempts. FAMILYBLOCKEDFAILEDLOGINS: The family member is blocked because of failed login attempts.\n",
+            "type": "string"
+          },
+          "termsaccepted": {
+            "description": "Has this patient accepted the portal's Terms and Conditions. This is a good indicator if the patient has actually logged in to the portal or simply is registered without ever having logged in.",
+            "type": "boolean"
+          },
+          "registeredyn": {
+            "description": "If this patient is registered or not for the portal.",
+            "type": "boolean"
+          },
+          "blockedfailedloginsyn": {
+            "description": "Is this patient blocked from the portal due to failed login attempts.",
+            "type": "boolean"
+          },
+          "lastlogindate": {
+            "description": "The last login date.",
+            "type": "string"
+          },
+          "familyblockedfailedloginsyn": {
+            "description": "Is this patient's family blocked from the portal due to failed login attempts.",
+            "type": "boolean"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "preferredpronouns": {
+      "description": "Pronoun this patient uses.",
+      "type": "string"
+    },
+    "lastappointment": {
+      "description": "The last appointment for this patient (before today), excluding cancelled or no-show appointments. (mm/dd/yyyy h24:mi)",
+      "type": "string"
+    },
+    "allpatientstatuses": {
+      "description": "message",
+      "type": "array",
+      "items": {
+        "required": [
+          "patientId"
+        ],
+        "properties": {
+          "departmentid": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The ID of a department that this patient is registered in."
+          },
+          "primaryproviderid": {
+            "type": "string",
+            "description": "The \"primary\" provider for this patient, if set."
+          },
+          "status": {
+            "type": "string",
+            "description": "The \"status\" of the patient, one of active, inactive, prospective, or deleted."
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "donotcallyn": {
+      "description": "Warning! This patient will not receive any communication from the practice if this field is set to true.",
+      "type": "boolean"
+    },
+    "primarydepartmentid": {
+      "description": "The patient's \"current\" department. This field is not always set by the practice.",
+      "type": "integer"
+    },
+    "status": {
+      "description": "The \"status\" of the patient, one of active, inactive, prospective, or deleted.",
+      "type": "string"
+    },
+    "balances": {
+      "description": "List of balances owed by the patient, broken down by provider (financial) group.",
+      "type": "array",
+      "items": {
+        "properties": {
+          "contracts": {
+            "description": "Information related to existing credit card contracts.",
+            "type": "array",
+            "items": {
+              "required": [
+                "contracts"
+              ],
+              "properties": {
+                "availablebalance": {
+                  "description": "The available balance on this contract.",
+                  "type": "string"
+                },
+                "contractclass": {
+                  "description": "The type of contract. For example, \"ONEYEAR,\"",
+                  "type": "string"
+                },
+                "maxamount": {
+                  "description": "The maximum allowed amount for this contract.",
+                  "type": "string"
+                }
+              },
+              "$schema": "http://json-schema.org/schema#",
+              "type": "object"
+            }
+          },
+          "providergroupid": {
+            "description": "Athena ID for this financial group.",
+            "type": "string"
+          },
+          "departmentlist": {
+            "description": "Comma separated list of department IDs that belong to this group",
+            "type": "string"
+          },
+          "balance": {
+            "description": "Balance for this provider group.",
+            "type": "string"
+          },
+          "cleanbalance": {
+            "description": "Indicates whether the balance is associated with a contract, payment plan, or collections agency.",
+            "type": "boolean"
+          },
+          "collectionsbalance": {
+            "description": "The outstanding amount associated with a collections agency.",
+            "type": "string"
+          },
+          "paymentplanbalance": {
+            "description": "The outstanding amount associated with a payment plan.",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    },
+    "lastemail": {
+      "description": "The last email for this patient on file.",
+      "type": "string"
+    },
+    "racecode": {
+      "description": "The patient race hierarchical code as specified in Race & Ethnicity - CDC * (2.16.840.1.113883.1.11.14914)",
+      "type": "string"
+    },
+    "sexualorientation": {
+      "description": "Sexual orientation of this patient.",
+      "type": "string"
+    },
+    "genderidentity": {
+      "description": "Gender with which this patient identifies.",
+      "type": "string"
+    },
+    "emailexistsyn": {
+      "description": "True if email exists. False if patient declined. Null if status is unknown.",
+      "type": "boolean"
+    },
+    "occupationcode": {
+      "description": "Occupation of the patient, using the US Census occupation code (code system 2.16.840.1.113883.6.240). \"other\" can be used as well.",
+      "type": "integer"
+    },
+    "race": {
+      "description": "The patient race, using the 2.16.840.1.113883.5.104 codeset. See http://www.hl7.org/implement/standards/fhir/terminologies-v3.html Special case: use \"declined\" to indicate that the patient declined to answer. Multiple values or a tab-seperated list of codes is acceptable for multiple races for input. The first race will be considered \"primary\". Note: you must update all values at once if you update any.\n",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sexualorientationother": {
+      "description": "If a patient does not identify with any prescribed sexual orientation choice, this field stores the patient-provided description of sexual orientation.",
+      "type": "string"
+    },
+    "patientid": {
+      "description": "Please remember to never disclose this ID to patients since it may result in inadvertant disclosure that a patient exists in a practice already.",
+      "type": "integer"
+    },
+    "firstname": {
+      "description": "Patient's first name",
+      "type": "string"
+    },
+    "middlename": {
+      "description": "Patient's middle name",
+      "type": "string"
+    },
+    "lastname": {
+      "description": "Patient's last name",
+      "type": "string"
+    },
+    "suffix": {
+      "description": "Patient's name suffix",
+      "type": "string"
+    },
+    "preferredname": {
+      "description": "The patient's preferred name (i.e. nickname).",
+      "type": "string"
+    },
+    "address1": {
+      "description": "Patient's address - 1st line",
+      "type": "string"
+    },
+    "address2": {
+      "description": "Patient's address - 2nd line",
+      "type": "string"
+    },
+    "city": {
+      "description": "Patient's city",
+      "type": "string"
+    },
+    "state": {
+      "description": "Patient's state (2 letter abbreviation)",
+      "type": "string"
+    },
+    "zip": {
+      "description": "Patient's zip. Matching occurs on first 5 characters.",
+      "type": "string"
+    },
+    "countrycode": {
+      "description": "Patient's country code",
+      "type": "string"
+    },
+    "countrycode3166": {
+      "description": "Patient's country code (ISO 3166-1)",
+      "type": "string"
+    },
+    "homephone": {
+      "description": "The patient's home phone number. Invalid numbers in a GET/PUT will be ignored. Patient phone numbers and other data may change, and one phone number may be associated with multiple patients. You are responsible for taking additional steps to verify patient identity and for using this data in accordance with applicable law, including HIPAA. Invalid numbers in a POST will be ignored, possibly resulting in an error.\n",
+      "type": "string"
+    },
+    "mobilephone": {
+      "description": "The patient's mobile phone number. On input, 'declined' can be used to indicate no number.  (Alternatively, hasmobile can also be set to false. \"declined\" simply does this for you.) Invalid numbers in a GET/PUT will be ignored. Patient phone numbers and other data may change, and one phone number may be associated with multiple patients. You are responsible for taking additional steps to verify patient identity and for using this data in accordance with applicable law, including HIPAA. Invalid numbers in a POST will be ignored, possibly resulting in an error.\n",
+      "type": "string"
+    },
+    "hasmobileyn": {
+      "description": "Set to false if a client has declined a phone number.",
+      "type": "boolean"
+    },
+    "workphone": {
+      "description": "The patient's work phone number. Generally not used to contact a patient. Invalid numbers in a GET/PUT will be ignored. Patient phone numbers and other data may change, and one phone number may be associated with multiple patients. You are responsible for taking additional steps to verify patient identity and for using this data in accordance with applicable law, including HIPAA. Invalid numbers in a POST will be ignored, possibly resulting in an error.\n",
+      "type": "string"
+    },
+    "email": {
+      "description": "Patient's email address. 'declined' can be used to indicate just that.",
+      "type": "string"
+    },
+    "ssn": {
+      "description": "The patient's SSN",
+      "type": "string"
+    },
+    "racename": {
+      "description": "The patient's primary race name. See race for more complete details.",
+      "type": "string"
+    },
+    "sex": {
+      "description": "Patient's sex (M/F)",
+      "type": "string"
+    },
+    "dob": {
+      "description": "Patient's DOB (mm/dd/yyyy)",
+      "type": "string"
+    },
+    "maritalstatus": {
+      "description": "Marital Status (D=Divorced, M=Married, S=Single, U=Unknown, W=Widowed, X=Separated, P=Partner)",
+      "type": "string"
+    },
+    "contactpreference": {
+      "description": "The MU-required field for \"preferred contact method\". This is not used by any automated systems.",
+      "type": "string"
+    },
+    "contactname": {
+      "description": "The name of the (emergency) person to contact about the patient. The contactname, contactrelationship, contacthomephone, and contactmobilephone fields are all related to the emergency contact for the patient. They are NOT related to the contractpreference_* fields.\n",
+      "type": "string"
+    },
+    "contactrelationship": {
+      "description": "Emergency contact relationship (one of SPOUSE, PARENT, CHILD, SIBLING, FRIEND, COUSIN, GUARDIAN, OTHER)",
+      "type": "string"
+    },
+    "contacthomephone": {
+      "description": "Emergency contact home phone. Invalid numbers in a GET/PUT will be ignored. Patient phone numbers and other data may change, and one phone number may be associated with multiple patients. You are responsible for taking additional steps to verify patient identity and for using this data in accordance with applicable law, including HIPAA. Invalid numbers in a POST will be ignored, possibly resulting in an error.\n",
+      "type": "string"
+    },
+    "contactmobilephone": {
+      "description": "Emergency contact mobile phone. Invalid numbers in a GET/PUT will be ignored. Patient phone numbers and other data may change, and one phone number may be associated with multiple patients. You are responsible for taking additional steps to verify patient identity and for using this data in accordance with applicable law, including HIPAA. Invalid numbers in a POST will be ignored, possibly resulting in an error.\n",
+      "type": "string"
+    },
+    "nextkinname": {
+      "description": "The full name of the next of kin.",
+      "type": "string"
+    },
+    "nextkinrelationship": {
+      "description": "The next of kin relationship (one of SPOUSE, PARENT, CHILD, SIBLING, FRIEND, COUSIN, GUARDIAN, OTHER)",
+      "type": "string"
+    },
+    "nextkinphone": {
+      "description": "The next of kin phone number. Invalid numbers in a GET/PUT will be ignored. Patient phone numbers and other data may change, and one phone number may be associated with multiple patients. You are responsible for taking additional steps to verify patient identity and for using this data in accordance with applicable law, including HIPAA. Invalid numbers in a POST will be ignored, possibly resulting in an error.\n",
+      "type": "string"
+    },
+    "guardianfirstname": {
+      "description": "The first name of the patient's guardian.",
+      "type": "string"
+    },
+    "guardianmiddlename": {
+      "description": "The middle name of the patient's guardian.",
+      "type": "string"
+    },
+    "guardianlastname": {
+      "description": "The last name of the patient's guardian.",
+      "type": "string"
+    },
+    "guardiansuffix": {
+      "description": "The suffix of the patient's guardian.",
+      "type": "string"
+    },
+    "guarantorfirstname": {
+      "description": "Guarantor's first name",
+      "type": "string"
+    },
+    "guarantormiddlename": {
+      "description": "Guarantor's middle name",
+      "type": "string"
+    },
+    "guarantorlastname": {
+      "description": "Guarantor's last name",
+      "type": "string"
+    },
+    "guarantorsuffix": {
+      "description": "Guarantor's name suffix",
+      "type": "string"
+    },
+    "guarantoraddress1": {
+      "description": "Guarantor's address",
+      "type": "string"
+    },
+    "guarantoraddress2": {
+      "description": "Guarantor's address - line 2",
+      "type": "string"
+    },
+    "guarantorcity": {
+      "description": "Guarantor's city",
+      "type": "string"
+    },
+    "guarantorstate": {
+      "description": "Guarantor's state (2 letter abbreviation)",
+      "type": "string"
+    },
+    "guarantorzip": {
+      "description": "Guarantor's zip",
+      "type": "string"
+    },
+    "guarantorcountrycode": {
+      "description": "Guarantor's country code",
+      "type": "string"
+    },
+    "guarantorcountrycode3166": {
+      "description": "Guarantor's country code (ISO 3166-1)",
+      "type": "string"
+    },
+    "guarantordob": {
+      "description": "Guarantor's DOB (mm/dd/yyyy)",
+      "type": "string"
+    },
+    "guarantorssn": {
+      "description": "Guarantor's SSN",
+      "type": "string"
+    },
+    "guarantoremail": {
+      "description": "Guarantor's email address",
+      "type": "string"
+    },
+    "guarantorphone": {
+      "description": "Guarantor's phone number. Invalid numbers in a GET/PUT will be ignored. Patient phone numbers and other data may change, and one phone number may be associated with multiple patients. You are responsible for taking additional steps to verify patient identity and for using this data in accordance with applicable law, including HIPAA. Invalid numbers in a POST will be ignored, possibly resulting in an error.\n",
+      "type": "string"
+    },
+    "guarantorrelationshiptopatient": {
+      "description": "The guarantor's relationship to the patient",
+      "type": "integer"
+    },
+    "guarantoraddresssameaspatient": {
+      "description": "The address of the guarantor is the same as the patient.",
+      "type": "boolean"
+    },
+    "registrationdate": {
+      "description": "Date the patient was registered.",
+      "type": "string"
+    },
+    "departmentid": {
+      "description": "Primary (registration) department ID.",
+      "type": "integer"
+    },
+    "portaltermsonfile": {
+      "description": "Flag determining whether or not the patient has accepted the Terms and Conditions for the patient portal.",
+      "type": "boolean"
+    },
+    "portalsignatureonfile": {
+      "description": "This flag is set if the patient's signature is on file",
+      "type": "boolean"
+    },
+    "privacyinformationverified": {
+      "description": "This flag is set if the patient's privacy information has been verified. Privacy information returns True if all of the items referenced in GET /patients/{patientid}/privacyinformationverified are true. Privacy information returns false if any of the items referenced in the GET /patients/{patientid}/privacyinformationverified API are false or expired.\n",
+      "type": "boolean"
+    },
+    "medicationhistoryconsentverified": {
+      "description": "Medication history consent status. If a practice doesn't have RXHub or Surescripts enabled, this will be null",
+      "type": "boolean"
+    },
+    "maritalstatusname": {
+      "description": "The long version of the marital status.",
+      "type": "string"
+    },
+    "employerid": {
+      "description": "The patient's employer's ID (from /employers call)",
+      "type": "integer"
+    },
+    "employerphone": {
+      "description": "The patient's employer's phone number. Normally, this is set by setting employerid. However, setting this value can be used to override this on an individual patient. Invalid numbers in a GET/PUT will be ignored. Patient phone numbers and other data may change, and one phone number may be associated with multiple patients. You are responsible for taking additional steps to verify patient identity and for using this data in accordance with applicable law, including HIPAA. Invalid numbers in a POST will be ignored, possibly resulting in an error.\n",
+      "type": "string"
+    },
+    "guarantoremployerid": {
+      "description": "The guaranror's employer's ID (from /employers call)",
+      "type": "integer"
+    },
+    "employername": {
+      "description": "The patient's employer's name.",
+      "type": "string"
+    },
+    "employeraddress": {
+      "description": "The patient's employer's address.",
+      "type": "string"
+    },
+    "employercity": {
+      "description": "The patient's employer's city.",
+      "type": "string"
+    },
+    "portalaccessgiven": {
+      "description": "This flag is set if the patient has been given access to the portal. This may be set by the API user if a patient has been given access to the portal \"by providing a preprinted brochure or flyer showing the URL where patients can access their Patient Care Summaries.\" The practiceinfo endpoint can provide the portal URL. While technically allowed, it would be very unusual to set this to false via the API.\n",
+      "type": "boolean"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

@@ -1,0 +1,28 @@
+{
+  "required": [
+    "error"
+  ],
+  "properties": {
+    "missingfields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "error": {
+      "type": "string"
+    },
+    "detailedmessage": {
+      "type": "string",
+      "x-ms-client-name": "DetailedMessage"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

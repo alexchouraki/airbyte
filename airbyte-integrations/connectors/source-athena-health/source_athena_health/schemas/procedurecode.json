@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "procedurecode": {
+      "description": "The ID of the code.",
+      "type": "string"
+    },
+    "procedurecodedescription": {
+      "description": "The description of the code.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

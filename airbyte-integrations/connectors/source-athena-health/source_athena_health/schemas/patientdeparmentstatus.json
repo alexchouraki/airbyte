@@ -1,0 +1,22 @@
+{
+  "required": [
+    "patientId"
+  ],
+  "properties": {
+    "departmentid": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The ID of a department that this patient is registered in."
+    },
+    "primaryproviderid": {
+      "type": "string",
+      "description": "The \"primary\" provider for this patient, if set."
+    },
+    "status": {
+      "type": "string",
+      "description": "The \"status\" of the patient, one of active, inactive, prospective, or deleted."
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

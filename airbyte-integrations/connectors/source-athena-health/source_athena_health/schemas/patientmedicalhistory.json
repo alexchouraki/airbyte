@@ -1,0 +1,52 @@
+{
+  "properties": {
+    "sectionnote": {
+      "description": "Additional notes for the entire medical history section, if any",
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "required": [
+          "questionid"
+        ],
+        "properties": {
+          "questionid": {
+            "description": "Athena ID for the question",
+            "type": "integer",
+            "format": "int32",
+            "x-ms-client-name": "QuestionId"
+          },
+          "question": {
+            "description": "Disease being inquired about",
+            "type": "string"
+          },
+          "answer": {
+            "description": "The answer given by the patient to the question",
+            "type": "string"
+          },
+          "note": {
+            "description": "Any special notes",
+            "type": "string"
+          },
+          "diagnosiscode": {
+            "description": "Diagnosis code",
+            "type": "string"
+          },
+          "codeset": {
+            "description": "Codeset the diagnosis code belongs to",
+            "type": "string"
+          },
+          "description": {
+            "description": "Description of the code",
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/schema#",
+        "type": "object"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

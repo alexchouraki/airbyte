@@ -1,0 +1,38 @@
+{
+  "required": [
+    "dob"
+  ],
+  "properties": {
+    "address1": {
+      "description": "Patient's address - 1st line (Max length: 100)",
+      "type": "string"
+    },
+    "address2": {
+      "description": "Patient's address - 2nd line (Max length: 100)",
+      "type": "string"
+    },
+    "city": {
+      "description": "Patient's city (Max length: 30)",
+      "type": "string"
+    },
+    "departmentid": {
+      "description": "Primary (registration) department ID.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "dob": {
+      "description": "Patient's DOB (mm/dd/yyyy)",
+      "type": "string"
+    },
+    "email": {
+      "description": "Patient's email address. 'declined' can be used to indicate just that.",
+      "type": "string"
+    },
+    "firstname": {
+      "description": "Patient's first name",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

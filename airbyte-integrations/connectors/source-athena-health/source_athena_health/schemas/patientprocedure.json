@@ -1,0 +1,37 @@
+{
+  "required": [
+    "procedureid"
+  ],
+  "properties": {
+    "procedureid": {
+      "type": "integer",
+      "description": "Athena ID for this surgery"
+    },
+    "procedurecode": {
+      "description": "Procedure code",
+      "type": "string"
+    },
+    "description": {
+      "description": "Surgery description for this procedure code",
+      "type": "string"
+    },
+    "source": {
+      "description": "Source of this procedure. Can be encounter (if performed) or historical",
+      "type": "string"
+    },
+    "providerid": {
+      "description": "ID of the provider that performed this procedure. Only returned for entries with source=\"encounter\".",
+      "type": "integer"
+    },
+    "note": {
+      "description": "Additional note for this surgery, if available",
+      "type": "string"
+    },
+    "proceduredate": {
+      "description": "Date when the surgery was performed",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

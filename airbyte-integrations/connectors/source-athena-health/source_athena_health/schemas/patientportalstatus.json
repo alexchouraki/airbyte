@@ -1,0 +1,50 @@
+{
+  "properties": {
+    "familyregisteredyn": {
+      "description": "Is there a family member registered with access to this patient.",
+      "type": "boolean"
+    },
+    "lastloginentity": {
+      "description": "Either \"PATIENT\" or \"FAMILY\", the last entity who accessed this patient.",
+      "type": "string"
+    },
+    "noportalyn": {
+      "description": "The privacy setting for blocking the patient from the portal is set.",
+      "type": "boolean"
+    },
+    "portalregistrationdate": {
+      "description": "The date the patient registered for the portal.",
+      "type": "string"
+    },
+    "entitytodisplay": {
+      "description": "Either \"FAMILY\" or \"PATIENT\".",
+      "type": "string"
+    },
+    "status": {
+      "description": "The status of the patient. Possible statuses: REGISTERED: The patient is registered for the portal. NOTREGISTERED: The patient is not registered for the portal. FAMILYLOGIN: This patient is set up for a family member to login. NOPORTAL: The privacy setting for blocking the patient from the portal is set. BLOCKEDFAILEDLOGINS: The patient is blocked because of failed login attempts. FAMILYBLOCKEDFAILEDLOGINS: The family member is blocked because of failed login attempts.\n",
+      "type": "string"
+    },
+    "termsaccepted": {
+      "description": "Has this patient accepted the portal's Terms and Conditions. This is a good indicator if the patient has actually logged in to the portal or simply is registered without ever having logged in.",
+      "type": "boolean"
+    },
+    "registeredyn": {
+      "description": "If this patient is registered or not for the portal.",
+      "type": "boolean"
+    },
+    "blockedfailedloginsyn": {
+      "description": "Is this patient blocked from the portal due to failed login attempts.",
+      "type": "boolean"
+    },
+    "lastlogindate": {
+      "description": "The last login date.",
+      "type": "string"
+    },
+    "familyblockedfailedloginsyn": {
+      "description": "Is this patient's family blocked from the portal due to failed login attempts.",
+      "type": "boolean"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

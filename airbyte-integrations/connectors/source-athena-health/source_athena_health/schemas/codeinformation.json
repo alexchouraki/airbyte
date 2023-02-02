@@ -1,0 +1,22 @@
+{
+  "required": [
+    "codeset",
+    "code"
+  ],
+  "properties": {
+    "codeset": {
+      "description": "Codeset for this code (ICD9 or ICD10)",
+      "type": "string"
+    },
+    "code": {
+      "description": "Actual ICD code for this diagnosis",
+      "type": "string"
+    },
+    "description": {
+      "description": "Brief description for this code",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

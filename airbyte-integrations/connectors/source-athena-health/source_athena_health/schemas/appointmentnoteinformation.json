@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "id": {
+      "description": "The id of the appointment note.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "text": {
+      "description": "The note associated with the appointment.",
+      "type": "string"
+    },
+    "displayonschedule": {
+      "description": "Whether the note should be displayed on the schedule.",
+      "type": "boolean"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

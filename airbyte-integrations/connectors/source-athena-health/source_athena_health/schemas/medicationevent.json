@@ -1,0 +1,22 @@
+{
+  "required": [
+    "type",
+    "eventdate"
+  ],
+  "properties": {
+    "type": {
+      "description": "The event type. Can be START, END, ORDER, ENTER, FILL, or HIDE.",
+      "type": "string"
+    },
+    "eventdate": {
+      "description": "The date this event occurred",
+      "type": "string"
+    },
+    "userdisplayname": {
+      "description": "The display name for the user most relevant for this event. May be null.",
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}
